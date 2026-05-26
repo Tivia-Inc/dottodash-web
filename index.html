@@ -20,6 +20,7 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
   h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.noitem h4,.noitem p,.qa .q,.qa .a{word-break:keep-all}
   h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p{text-wrap:balance}
+  html[lang="ja"] :is(h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.noitem h4,.noitem p,.qa .q,.qa .a){word-break:normal;line-break:strict}
 
   nav{position:sticky;top:0;z-index:20;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -30,29 +31,24 @@
   .brand b{font-size:17px;font-weight:600;letter-spacing:-.02em}
   .navright{display:flex;align-items:center;gap:20px;font-size:14px}
   .lang span{color:var(--muted);cursor:pointer}.lang span.on{color:var(--ink);font-weight:700}
-  .navcta{background:var(--ink);color:#fff;text-decoration:none;padding:8px 16px;border-radius:10px;font-weight:600}
+
+  .badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;text-decoration:none;padding:9px 17px;border-radius:13px}
+  .badge svg{width:21px;height:25px;fill:#fff;flex:0 0 auto}
+  .badge .bt{display:flex;flex-direction:column;line-height:1.08;text-align:left}
+  .badge .bt .t1{font-size:11px;font-weight:500}
+  .badge .bt .t2{font-size:19px;font-weight:600;letter-spacing:-.01em}
+  .badge.sm{padding:6px 12px;border-radius:10px;gap:8px}
+  .badge.sm svg{width:17px;height:20px}
+  .badge.sm .bt .t1{font-size:8.5px}.badge.sm .bt .t2{font-size:14px}
+  .rankbadge{display:inline-flex;align-items:center;gap:6px;background:var(--tint);color:var(--accent);font-weight:600;font-size:13px;padding:6px 12px;border-radius:9999px;margin-bottom:16px}
+  .heroshot{width:262px;max-width:100%;display:block;margin:0 auto;border-radius:36px;box-shadow:0 36px 70px -28px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.06)}
 
   .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center;padding:clamp(48px,8vw,96px) 0 clamp(40px,6vw,72px)}
   .eyebrow{color:var(--accent);font-weight:600;font-size:15px;letter-spacing:.02em;margin-bottom:18px}
   .hero h1{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
   .hero p{font-size:clamp(16px,1.7vw,19px);color:var(--muted);margin-top:22px;max-width:42ch;line-height:1.65}
   .actions{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 24px;border-radius:13px;font-size:16px;font-weight:600}
   .meta{color:var(--muted);font-size:13.5px}
-
-  .phone{width:262px;background:var(--tile);border-radius:38px;padding:22px 18px;margin:0 auto;box-shadow:0 36px 70px -28px rgba(0,0,0,.25),0 2px 10px rgba(0,0,0,.05)}
-  .ph-mark{display:flex;align-items:center;gap:7px;margin-bottom:18px}
-  .ph-dot{width:15px;height:15px;border-radius:50%;background:var(--accent)}
-  .ph-dash{width:22px;height:9px;border-radius:5px;background:var(--ink)}
-  .ph-label{color:var(--muted);font-size:12px;margin-bottom:4px}
-  .ph-count{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
-  .row{display:flex;align-items:center;gap:11px;padding:10px 0;border-top:1px solid #EEE}
-  .ring{width:19px;height:19px;border-radius:50%;border:2px solid #D2D2D7;flex:0 0 auto}
-  .ring.done{border-color:var(--accent);background:var(--accent);position:relative}
-  .ring.done::after{content:"";position:absolute;inset:0;margin:auto;width:7px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-1px) rotate(-45deg)}
-  .tline{font-size:14px}.tline.done{color:var(--muted);text-decoration:line-through}
-  .bar{height:6px;border-radius:3px;background:#E7E7EC;margin-top:14px;overflow:hidden}
-  .bar>i{display:block;height:100%;width:40%;background:var(--accent);border-radius:3px}
 
   .band{text-align:center;padding:clamp(56px,9vw,108px) 0;border-top:1px solid var(--line)}
   .band h2{font-size:clamp(24px,3.4vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.35;max-width:24ch;margin:0 auto}
@@ -111,6 +107,11 @@
   .qa .q{font-weight:700;font-size:17px;letter-spacing:-.01em}
   .qa .a{color:var(--muted);margin-top:8px;line-height:1.65;font-size:15.5px}
 
+  .feedback{text-align:center}
+  .feedback h2{max-width:600px;margin-inline:auto}
+  .feedback .ssub{max-width:560px}
+  .mailbtn{display:inline-flex;align-items:center;gap:8px;margin-top:24px;border:1.5px solid var(--accent);color:var(--accent);text-decoration:none;padding:12px 22px;border-radius:12px;font-weight:600;font-size:15px}
+
   .closing{text-align:center;padding:clamp(64px,10vw,128px) 0 clamp(40px,6vw,70px);border-top:1px solid var(--line)}
   .closing h2{font-size:clamp(30px,4.6vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.12}
   .closing .price{color:var(--muted);font-size:15px;margin-top:20px}
@@ -130,117 +131,118 @@
 <nav><div class="wrap">
   <div class="brand"><div class="mark"><span class="dot"></span><span class="dash"></span></div><b>dottodash</b></div>
   <div class="navright">
-    <span class="lang"><span id="lko" onclick="setLang('ko')">KO</span> · <span id="len" class="on" onclick="setLang('en')">EN</span></span>
-    <a class="navcta" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en="Get the app" data-ko="앱 다운로드">Get the app</a>
+    <span class="lang"><span id="len" class="on" onclick="setLang('en')">EN</span> · <span id="lko" onclick="setLang('ko')">KO</span> · <span id="lja" onclick="setLang('ja')">JP</span></span>
+    <a class="badge sm" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener"><svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="bt"><span class="t1" data-en="Download on the" data-ko="App Store에서" data-ja="App Storeで">Download on the</span><span class="t2" data-en="App Store" data-ko="다운로드" data-ja="ダウンロード">App Store</span></span></a>
   </div>
 </div></nav>
 
 <header class="wrap"><div class="hero">
   <div>
-    <div class="eyebrow" data-en="One task. One line at a time." data-ko="오늘 할 일, 한 줄씩.">One task. One line at a time.</div>
-    <h1 data-en="Todo apps don't have to be complicated." data-ko="할 일 앱은 원래<br>단순해야 합니다.">Todo apps don't have to be complicated.</h1>
-    <p data-en="dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done." data-ko="할 일 앱은 자꾸 복잡해지잖아요. dottodash는 반대로 갑니다.<br>프로젝트도, 우선순위도, 태그도, 배울 것도 없어요.<br>그냥 열고, 적고, 해내면 돼요.">dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done.</p>
-    <div class="actions"><a class="btn" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en=" Download on the App Store" data-ko=" App Store에서 다운로드"> Download on the App Store</a><span class="meta" data-en="iPhone · iPad · iCloud sync" data-ko="iPhone · iPad · iCloud 동기화">iPhone · iPad · iCloud sync</span></div>
+    <div class="rankbadge">⭐ <span data-en="#6 in Productivity · App Store" data-ko="App Store 생산성 차트 #6위" data-ja="App Store 仕事効率化 #6位">#6 in Productivity · App Store</span></div>
+    <div class="eyebrow" data-en="One task. One line at a time." data-ko="오늘 할 일, 한 줄씩." data-ja="タスクを、一行ずつ。">One task. One line at a time.</div>
+    <h1 data-en="Todo apps don't have to be complicated." data-ko="할 일 앱은 원래<br>단순해야 합니다." data-ja="ToDoアプリは、<br>もっとシンプルでいい。">Todo apps don't have to be complicated.</h1>
+    <p data-en="dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done." data-ko="할 일 앱은 자꾸 복잡해지잖아요. dottodash는 반대로 갑니다.<br>프로젝트도, 우선순위도, 태그도, 배울 것도 없어요.<br>그냥 열고, 적고, 해내면 돼요." data-ja="ToDoアプリはどんどん複雑になりますよね。dottodashは逆を行きます。<br>プロジェクトも、優先度も、タグも、覚えることもありません。<br>開いて、書いて、片づけるだけ。">dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done.</p>
+    <div class="actions"><a class="badge" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener"><svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="bt"><span class="t1" data-en="Download on the" data-ko="App Store에서" data-ja="App Storeで">Download on the</span><span class="t2" data-en="App Store" data-ko="다운로드" data-ja="ダウンロード">App Store</span></span></a><span class="meta" data-en="iPhone · iPad · iCloud sync" data-ko="iPhone · iPad · iCloud 동기화" data-ja="iPhone · iPad · iCloud同期">iPhone · iPad · iCloud sync</span></div>
   </div>
   <div>
-    <div class="phone">
-      <div class="ph-mark"><span class="ph-dot"></span><span class="ph-dash"></span></div>
-      <div class="ph-label" data-en="Today" data-ko="오늘">Today</div><div class="ph-count">2 / 5</div>
-      <div class="row"><span class="ring done"></span><span class="tline done" data-en="Water the plants" data-ko="화분 물 주기">Water the plants</span></div>
-      <div class="row"><span class="ring done"></span><span class="tline done" data-en="Reply to Mom" data-ko="엄마한테 답장">Reply to Mom</span></div>
-      <div class="row"><span class="ring"></span><span class="tline" data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
-      <div class="row"><span class="ring"></span><span class="tline" data-en="Go for a walk" data-ko="산책하기">Go for a walk</span></div>
-      <div class="row"><span class="ring"></span><span class="tline" data-en="Buy groceries" data-ko="장보기">Buy groceries</span></div>
-      <div class="bar"><i></i></div>
-    </div>
+    <img class="heroshot" src="assets/screen-today-en.png?v=2" alt="dottodash — Today" data-en-src="assets/screen-today-en.png?v=2" data-ko-src="assets/screen-today-ko.png?v=2" data-ja-src="assets/screen-today-ja.png?v=2">
   </div>
 </div></header>
 
 <section class="band wrap"><div class="reveal">
-  <h2><span data-en="No hierarchies. No tags. " data-ko="프로젝트도, 우선순위도, 태그도 없어요.<br>">No hierarchies. No tags. </span><span class="dim" data-en="Just your tasks for today — written the way you think." data-ko="그저 오늘 할 일만, 메모하듯 한 줄씩 적으면 돼요.">Just your tasks for today — written the way you think.</span></h2>
+  <h2><span data-en="No hierarchies. No tags. " data-ko="프로젝트도, 우선순위도, 태그도 없어요.<br>" data-ja="プロジェクトも、優先度も、タグもなし。<br>">No hierarchies. No tags. </span><span class="dim" data-en="Just your tasks for today — written the way you think." data-ko="그저 오늘 할 일만, 메모하듯 한 줄씩 적으면 돼요." data-ja="今日やることを、メモするように一行ずつ。">Just your tasks for today — written the way you think.</span></h2>
 </div></section>
 
 <section class="sect wrap">
   <div class="shead reveal">
-    <div class="lead" data-en="One task, every view" data-ko="한 번만 적으면 돼요">One task, every view</div>
-    <h2 data-en="Write it once. See it the way that fits." data-ko="한 번만 적으면,<br>세 화면에 똑같이 나타나요.">Write it once. See it the way that fits.</h2>
-    <p class="ssub" data-en="The same task lives in your day, your month, and your notes — never re-entered, always in sync." data-ko="같은 할 일이 오늘에도, 캘린더에도, 투두에도 그대로 있어요.<br>다시 적을 필요 없이, 늘 똑같이 이어져요.">The same task lives in your day, your month, and your notes — never re-entered, always in sync.</p>
+    <div class="lead" data-en="One task, every view" data-ko="한 번만 적으면 돼요" data-ja="一度書くだけ">One task, every view</div>
+    <h2 data-en="Write it once. See it the way that fits." data-ko="한 번만 적으면,<br>세 화면에 똑같이 나타나요." data-ja="一度書けば、<br>3つの画面に同じように現れます。">Write it once. See it the way that fits.</h2>
+    <p class="ssub" data-en="The same task lives in your day, your month, and your notes — never re-entered, always in sync." data-ko="같은 할 일이 오늘에도, 캘린더에도, 투두에도 그대로 있어요.<br>다시 적을 필요 없이, 늘 똑같이 이어져요." data-ja="同じタスクが、今日にも、カレンダーにも、ToDoにもそのまま。<br>入力し直す必要はなく、いつも同じ状態で続きます。">The same task lives in your day, your month, and your notes — never re-entered, always in sync.</p>
   </div>
   <div class="tree">
     <svg id="links"><path/></svg>
-    <div class="tnode"><div class="tag" data-en="Your task" data-ko="내 할 일">Your task</div><div class="it"><span class="d"></span><span class="t" data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div></div>
+    <div class="tnode"><div class="tag" data-en="Your task" data-ko="내 할 일" data-ja="あなたのタスク">Your task</div><div class="it"><span class="d"></span><span class="t" data-en="Read 20 pages" data-ko="20쪽 읽기" data-ja="20ページ読む">Read 20 pages</span></div></div>
     <div class="tcols">
       <div class="tcol"><div class="tp">
-        <div class="cap"><span class="pd"></span><span data-en="Today" data-ko="오늘">Today</span></div>
-        <div class="mrow dim"><span class="rg"></span><span data-en="Water the plants" data-ko="화분 물 주기">Water the plants</span></div>
-        <div class="mrow hot"><span class="rg"></span><span data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
-        <div class="mrow dim"><span class="rg"></span><span data-en="Go for a walk" data-ko="산책하기">Go for a walk</span></div>
+        <div class="cap"><span class="pd"></span><span data-en="Today" data-ko="오늘" data-ja="今日">Today</span></div>
+        <div class="mrow dim"><span class="rg"></span><span data-en="Water the plants" data-ko="화분 물 주기" data-ja="植物に水やり">Water the plants</span></div>
+        <div class="mrow hot"><span class="rg"></span><span data-en="Read 20 pages" data-ko="20쪽 읽기" data-ja="20ページ読む">Read 20 pages</span></div>
+        <div class="mrow dim"><span class="rg"></span><span data-en="Go for a walk" data-ko="산책하기" data-ja="散歩する">Go for a walk</span></div>
       </div></div>
       <div class="tcol"><div class="tp">
-        <div class="cap"><span class="pd"></span><span data-en="Calendar" data-ko="캘린더">Calendar</span></div>
+        <div class="cap"><span class="pd"></span><span data-en="Calendar" data-ko="캘린더" data-ja="カレンダー">Calendar</span></div>
         <div class="mgrid">
           <div class="mc on">17</div><div class="mc on task">18</div><div class="mc on task">19</div><div class="mc on">20</div><div class="mc hot task">21</div>
           <div class="mc task">22</div><div class="mc">23</div><div class="mc task">24</div><div class="mc">25</div><div class="mc">26</div>
         </div>
       </div></div>
       <div class="tcol"><div class="tp">
-        <div class="cap"><span class="pd"></span><span data-en="Todo" data-ko="투두">Todo</span></div>
-        <div class="mtitle" data-en="May 21" data-ko="5월 21일">May 21</div>
-        <div class="mline hot"><span class="bul">–</span><span data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
-        <div class="mline"><span class="bul">–</span><span data-en="Call Mom" data-ko="엄마한테 전화">Call Mom</span></div>
-        <div class="mline dim"><span class="bul">–</span><span data-en="Buy groceries" data-ko="장보기">Buy groceries</span></div>
+        <div class="cap"><span class="pd"></span><span data-en="Todo" data-ko="투두" data-ja="ToDo">Todo</span></div>
+        <div class="mtitle" data-en="May 21" data-ko="5월 21일" data-ja="5月21日">May 21</div>
+        <div class="mline hot"><span class="bul">–</span><span data-en="Read 20 pages" data-ko="20쪽 읽기" data-ja="20ページ読む">Read 20 pages</span></div>
+        <div class="mline"><span class="bul">–</span><span data-en="Call Mom" data-ko="엄마한테 전화" data-ja="母に電話">Call Mom</span></div>
+        <div class="mline dim"><span class="bul">–</span><span data-en="Buy groceries" data-ko="장보기" data-ja="買い物">Buy groceries</span></div>
       </div></div>
     </div>
   </div>
 </section>
 
 <section class="wrap"><div class="grid3">
-  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Look back" data-ko="지난 할 일도 챙기기">Look back</h4><p data-en="Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap." data-ko="어제, 그제, 3일 전 할 일을 쉽게 돌아보고, 못 다 한 일은 탭 한 번으로 오늘로 가져와요.">Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap.</p></div>
-  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="iCloud sync" data-ko="iCloud 자동 동기화">iCloud sync</h4><p data-en="Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you." data-ko="iPhone과 iPad 어디서나 이어서. 기기를 바꿔도 할 일은 그대로 따라와요.">Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you.</p></div>
-  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Quiet design" data-ko="조용한 디자인">Quiet design</h4><p data-en="One accent color, automatic dark mode. The app recedes so your tasks can stand out." data-ko="하나의 포인트 컬러와 다크 모드. 앱은 물러나고, 할 일이 주인공이 돼요.">One accent color, automatic dark mode. The app recedes so your tasks can stand out.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Look back" data-ko="지난 할 일도 챙기기" data-ja="過去のタスクも逃さない">Look back</h4><p data-en="Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap." data-ko="어제, 그제, 3일 전 할 일을 쉽게 돌아보고, 못 다 한 일은 탭 한 번으로 오늘로 가져와요." data-ja="昨日・一昨日・3日前のタスクをかんたんに振り返り、終わらなかったものはワンタップで今日へ。">Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="iCloud sync" data-ko="iCloud 자동 동기화" data-ja="iCloud自動同期">iCloud sync</h4><p data-en="Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you." data-ko="iPhone과 iPad 어디서나 이어서. 기기를 바꿔도 할 일은 그대로 따라와요." data-ja="iPhoneとiPadでそのまま続き。機種を変えても、タスクはついてきます。">Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Quiet design" data-ko="조용한 디자인" data-ja="静かなデザイン">Quiet design</h4><p data-en="One accent color, automatic dark mode. The app recedes so your tasks can stand out." data-ko="하나의 포인트 컬러와 다크 모드. 앱은 물러나고, 할 일이 주인공이 돼요." data-ja="ひとつのアクセントカラーと自動ダークモード。アプリは控えめに、タスクが主役に。">One accent color, automatic dark mode. The app recedes so your tasks can stand out.</p></div>
 </div></section>
 
 <section class="sect wrap">
   <div class="shead reveal">
-    <div class="lead" data-en="No noise" data-ko="군더더기 없음">No noise</div>
-    <h2 data-en="What you won't find." data-ko="여기엔 없는 것들.">What you won't find.</h2>
-    <p class="ssub" data-en="The complexity you escaped — gone for good." data-ko="그동안 당신을 지치게 한 복잡함은, 여기 없어요.">The complexity you escaped — gone for good.</p>
+    <div class="lead" data-en="No noise" data-ko="군더더기 없음" data-ja="ノイズなし">No noise</div>
+    <h2 data-en="What you won't find." data-ko="여기엔 없는 것들." data-ja="ここに無いもの。">What you won't find.</h2>
+    <p class="ssub" data-en="The complexity you escaped — gone for good." data-ko="그동안 당신을 지치게 한 복잡함은, 여기 없어요." data-ja="あなたが離れてきた複雑さは、ここにはありません。">The complexity you escaped — gone for good.</p>
   </div>
   <div class="no-grid reveal">
-    <div class="noitem"><div class="nemoji">🪪</div><h4 data-en="No accounts" data-ko="계정 없음">No accounts</h4><p data-en="No sign-up. Open the app and start." data-ko="가입 없이, 열면 바로 시작해요.">No sign-up. Open the app and start.</p></div>
-    <div class="noitem"><div class="nemoji">💳</div><h4 data-en="No subscription" data-ko="구독 없음">No subscription</h4><p data-en="Buy once. It's yours." data-ko="한 번 사면, 계속 당신 거예요.">Buy once. It's yours.</p></div>
-    <div class="noitem"><div class="nemoji">📢</div><h4 data-en="No ads" data-ko="광고 없음">No ads</h4><p data-en="Nothing competing for your attention." data-ko="집중을 방해하는 게 하나도 없어요.">Nothing competing for your attention.</p></div>
-    <div class="noitem"><div class="nemoji">📍</div><h4 data-en="No tracking" data-ko="추적 없음">No tracking</h4><p data-en="Your tasks stay yours. We never see them." data-ko="할 일은 당신 거예요. 저희는 들여다보지 않아요.">Your tasks stay yours. We never see them.</p></div>
+    <div class="noitem"><div class="nemoji">🪪</div><h4 data-en="No accounts" data-ko="계정 없음" data-ja="アカウント不要">No accounts</h4><p data-en="No sign-up. Open the app and start." data-ko="가입 없이, 열면 바로 시작해요." data-ja="登録なし。開いてすぐ始められます。">No sign-up. Open the app and start.</p></div>
+    <div class="noitem"><div class="nemoji">💳</div><h4 data-en="No subscription" data-ko="구독 없음" data-ja="サブスクなし">No subscription</h4><p data-en="Buy once. It's yours." data-ko="한 번 사면, 계속 당신 거예요." data-ja="一度の購入で、ずっとあなたのもの。">Buy once. It's yours.</p></div>
+    <div class="noitem"><div class="nemoji">📢</div><h4 data-en="No ads" data-ko="광고 없음" data-ja="広告なし">No ads</h4><p data-en="Nothing competing for your attention." data-ko="집중을 방해하는 게 하나도 없어요." data-ja="気を散らすものは、一つもありません。">Nothing competing for your attention.</p></div>
+    <div class="noitem"><div class="nemoji">📍</div><h4 data-en="No tracking" data-ko="추적 없음" data-ja="追跡なし">No tracking</h4><p data-en="Your tasks stay yours. We never see them." data-ko="할 일은 당신 거예요. 저희는 들여다보지 않아요." data-ja="タスクはあなたのもの。私たちは覗きません。">Your tasks stay yours. We never see them.</p></div>
   </div>
 </section>
 
 <section class="sect wrap" id="faq">
   <div class="shead reveal">
-    <div class="lead" data-en="Good to know" data-ko="알아두면 좋아요">Good to know</div>
-    <h2 data-en="Questions, answered." data-ko="자주 묻는 질문.">Questions, answered.</h2>
+    <div class="lead" data-en="Good to know" data-ko="알아두면 좋아요" data-ja="知っておくと安心">Good to know</div>
+    <h2 data-en="Questions, answered." data-ko="자주 묻는 질문." data-ja="よくある質問。">Questions, answered.</h2>
   </div>
   <div class="faq reveal">
-    <div class="qa"><div class="q" data-en="Is it a subscription?" data-ko="구독인가요?">Is it a subscription?</div><div class="a" data-en="No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees." data-ko="아니요, 1회 구매예요. 한 번 사면 계속 쓰는 앱이라 정기 결제가 없어요.">No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees.</div></div>
-    <div class="qa"><div class="q" data-en="Where is my data stored?" data-ko="데이터는 어디에 저장되나요?">Where is my data stored?</div><div class="a" data-en="On your device, and synced privately through your own iCloud. We have no servers and never see your tasks." data-ko="기기에 저장되고, 본인 iCloud로만 동기화돼요. 저희는 서버가 없어서 할 일을 볼 수 없어요.">On your device, and synced privately through your own iCloud. We have no servers and never see your tasks.</div></div>
-    <div class="qa"><div class="q" data-en="iPhone and iPad only?" data-ko="iPhone·iPad만 되나요?">iPhone and iPad only?</div><div class="a" data-en="Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad." data-ko="네, iOS 전용이에요. iPhone과 iPad에서 동기화돼 이어져요.">Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad.</div></div>
-    <div class="qa"><div class="q" data-en="Do I need to set anything up?" data-ko="따로 설정할 게 있나요?">Do I need to set anything up?</div><div class="a" data-en="No. There's nothing to configure — open the app and write your first task." data-ko="아니요, 설정할 게 없어요. 열어서 첫 할 일만 적으면 돼요.">No. There's nothing to configure — open the app and write your first task.</div></div>
+    <div class="qa"><div class="q" data-en="Is it a subscription?" data-ko="구독인가요?" data-ja="サブスクですか？">Is it a subscription?</div><div class="a" data-en="No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees." data-ko="아니요, 1회 구매예요. 한 번 사면 계속 쓰는 앱이라 정기 결제가 없어요." data-ja="いいえ、一度の購入です。一度買えばずっと使えて、定期課金はありません。">No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees.</div></div>
+    <div class="qa"><div class="q" data-en="Where is my data stored?" data-ko="데이터는 어디에 저장되나요?" data-ja="データはどこに保存されますか？">Where is my data stored?</div><div class="a" data-en="On your device, and synced privately through your own iCloud. We have no servers and never see your tasks." data-ko="기기에 저장되고, 본인 iCloud로만 동기화돼요. 저희는 서버가 없어서 할 일을 볼 수 없어요." data-ja="端末に保存され、ご自身のiCloudだけで同期されます。私たちはサーバーを持たず、タスクを見ることはできません。">On your device, and synced privately through your own iCloud. We have no servers and never see your tasks.</div></div>
+    <div class="qa"><div class="q" data-en="iPhone and iPad only?" data-ko="iPhone·iPad만 되나요?" data-ja="iPhone・iPadだけですか？">iPhone and iPad only?</div><div class="a" data-en="Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad." data-ko="네, iOS 전용이에요. iPhone과 iPad에서 동기화돼 이어져요." data-ja="はい、iOS専用です。iPhoneとiPadで同期して使えます。">Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad.</div></div>
+    <div class="qa"><div class="q" data-en="Do I need to set anything up?" data-ko="따로 설정할 게 있나요?" data-ja="設定は必要ですか？">Do I need to set anything up?</div><div class="a" data-en="No. There's nothing to configure — open the app and write your first task." data-ko="아니요, 설정할 게 없어요. 열어서 첫 할 일만 적으면 돼요." data-ja="いいえ、設定は不要です。開いて最初のタスクを書くだけ。">No. There's nothing to configure — open the app and write your first task.</div></div>
   </div>
 </section>
 
 <section class="closing wrap"><div class="reveal">
-  <h2 data-en="Less app. More done." data-ko="더 많은 기능보다,<br>더 자주 열게 되는 앱.">Less app. More done.</h2>
-  <div class="price" data-en="$2.99 · one-time purchase · no subscription" data-ko="₩4,900 · 1회 구매 · 구독 없음">$2.99 · one-time purchase · no subscription</div>
-  <div class="actions"><a class="btn" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en=" Download on the App Store" data-ko=" App Store에서 다운로드"> Download on the App Store</a></div>
+  <h2 data-en="Less app. More done." data-ko="더 많은 기능보다,<br>더 자주 열게 되는 앱." data-ja="機能の多さより、<br>毎日開きたくなるアプリへ。">Less app. More done.</h2>
+  <div class="price" data-en="$2.99 · one-time purchase · no subscription" data-ko="₩4,900 · 1회 구매 · 구독 없음" data-ja="¥600 · 買い切り · サブスクなし">$2.99 · one-time purchase · no subscription</div>
+  <div class="actions"><a class="badge" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener"><svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="bt"><span class="t1" data-en="Download on the" data-ko="App Store에서" data-ja="App Storeで">Download on the</span><span class="t2" data-en="App Store" data-ko="다운로드" data-ja="ダウンロード">App Store</span></span></a></div>
 </div></section>
 
-<footer><div class="wrap"><span>© 2026 dottodash</span><span><a href="https://daisy-tellurium-50b.notion.site/dottodash-Privacy-Policy-36a3a23ed534807183cee9cafa0f3478" target="_blank" rel="noopener" data-en="Privacy" data-ko="개인정보처리방침">Privacy</a><a href="#faq" data-en="Support" data-ko="고객지원">Support</a><a id="langlink" onclick="setLang(document.documentElement.lang==='en'?'ko':'en')" data-en="한국어" data-ko="English">한국어</a></span></div></footer>
+<section class="sect wrap feedback">
+  <div class="shead reveal" style="margin-bottom:0">
+    <div class="lead" data-en="We're listening" data-ko="언제나 듣고 있어요" data-ja="いつでも聞いています">We're listening</div>
+    <h2 data-en="Your feedback shapes dottodash." data-ko="여러분의 피드백이 dottodash를 만듭니다." data-ja="あなたのフィードバックがdottodashをつくります。">Your feedback shapes dottodash.</h2>
+    <p class="ssub" data-en="Feedback is always welcome — the developer reads every message and personally works your input into the app. Say hello anytime." data-ko="피드백은 언제나 환영이에요. 개발자가 직접 읽고, 소중한 의견을 손수 반영합니다. 언제든 편하게 말 걸어주세요." data-ja="フィードバックはいつでも歓迎です。開発者が自分で目を通し、いただいた声をひとつずつアプリに反映しています。どうぞお気軽に。">Feedback is always welcome — the developer reads every message and personally works your input into the app. Say hello anytime.</p>
+    <a class="mailbtn" href="mailto:admin@tivia.kr">✉ admin@tivia.kr</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 dottodash</span><span><a href="https://daisy-tellurium-50b.notion.site/dottodash-Privacy-Policy-36a3a23ed534807183cee9cafa0f3478" target="_blank" rel="noopener" data-en="Privacy" data-ko="개인정보처리방침" data-ja="プライバシー">Privacy</a><a href="#faq" data-en="Support" data-ko="고객지원" data-ja="サポート">Support</a></span></div></footer>
 
 <script>
   function setLang(l){
     document.documentElement.lang=l;
     document.querySelectorAll('[data-'+l+']').forEach(e=>{e.innerHTML=e.getAttribute('data-'+l)});
-    document.getElementById('len').classList.toggle('on',l==='en');
-    document.getElementById('lko').classList.toggle('on',l==='ko');
+    document.querySelectorAll('[data-'+l+'-src]').forEach(e=>{e.src=e.getAttribute('data-'+l+'-src')});
+    ['en','ko','ja'].forEach(x=>document.getElementById('l'+x).classList.toggle('on',x===l));
     requestAnimationFrame(drawLinks);
   }
   function drawLinks(){
