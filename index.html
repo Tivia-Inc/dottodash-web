@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dottodash — the simple to-do app for iPhone &amp; iPad</title>
+<meta name="description" content="A calm, simple to-do app for iPhone and iPad. No projects, no tags, no subscription — just today's tasks, in sync via iCloud.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dottodash — the simple to-do app">
+<meta property="og:description" content="No projects, no tags, no subscription. Just today's tasks, in sync via iCloud.">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{--accent:#0066CC;--ink:#1D1D1F;--muted:#6E6E73;--canvas:#F5F5F7;--tile:#FFFFFF;--line:#E6E6EA;--tint:rgba(0,102,204,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.noitem h4,.noitem p,.qa .q,.qa .a{word-break:keep-all}
+  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p{text-wrap:balance}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .mark{display:flex;align-items:center;gap:7px}
+  .dot{width:16px;height:16px;border-radius:50%;background:var(--accent)}
+  .dash{width:24px;height:10px;border-radius:5px;background:var(--ink)}
+  .brand b{font-size:17px;font-weight:600;letter-spacing:-.02em}
+  .navright{display:flex;align-items:center;gap:20px;font-size:14px}
+  .lang span{color:var(--muted);cursor:pointer}.lang span.on{color:var(--ink);font-weight:700}
+  .navcta{background:var(--ink);color:#fff;text-decoration:none;padding:8px 16px;border-radius:10px;font-weight:600}
+
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center;padding:clamp(48px,8vw,96px) 0 clamp(40px,6vw,72px)}
+  .eyebrow{color:var(--accent);font-weight:600;font-size:15px;letter-spacing:.02em;margin-bottom:18px}
+  .hero h1{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+  .hero p{font-size:clamp(16px,1.7vw,19px);color:var(--muted);margin-top:22px;max-width:42ch;line-height:1.65}
+  .actions{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 24px;border-radius:13px;font-size:16px;font-weight:600}
+  .meta{color:var(--muted);font-size:13.5px}
+
+  .phone{width:262px;background:var(--tile);border-radius:38px;padding:22px 18px;margin:0 auto;box-shadow:0 36px 70px -28px rgba(0,0,0,.25),0 2px 10px rgba(0,0,0,.05)}
+  .ph-mark{display:flex;align-items:center;gap:7px;margin-bottom:18px}
+  .ph-dot{width:15px;height:15px;border-radius:50%;background:var(--accent)}
+  .ph-dash{width:22px;height:9px;border-radius:5px;background:var(--ink)}
+  .ph-label{color:var(--muted);font-size:12px;margin-bottom:4px}
+  .ph-count{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+  .row{display:flex;align-items:center;gap:11px;padding:10px 0;border-top:1px solid #EEE}
+  .ring{width:19px;height:19px;border-radius:50%;border:2px solid #D2D2D7;flex:0 0 auto}
+  .ring.done{border-color:var(--accent);background:var(--accent);position:relative}
+  .ring.done::after{content:"";position:absolute;inset:0;margin:auto;width:7px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-1px) rotate(-45deg)}
+  .tline{font-size:14px}.tline.done{color:var(--muted);text-decoration:line-through}
+  .bar{height:6px;border-radius:3px;background:#E7E7EC;margin-top:14px;overflow:hidden}
+  .bar>i{display:block;height:100%;width:40%;background:var(--accent);border-radius:3px}
+
+  .band{text-align:center;padding:clamp(56px,9vw,108px) 0;border-top:1px solid var(--line)}
+  .band h2{font-size:clamp(24px,3.4vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.35;max-width:24ch;margin:0 auto}
+  .band h2 .dim{color:var(--muted)}
+
+  .sect{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--line)}
+  .sect .shead{text-align:center;margin-bottom:clamp(40px,6vw,64px)}
+  .sect .lead{color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+  .sect h2{font-size:clamp(26px,3.6vw,42px);font-weight:700;letter-spacing:-.025em;line-height:1.18}
+  .sect .ssub{color:var(--muted);font-size:clamp(15px,1.6vw,18px);margin-top:16px;max-width:42ch;margin-inline:auto;line-height:1.6}
+
+  .tree{max-width:820px;margin:0 auto;position:relative}
+  #links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+  #links path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;opacity:.4}
+  .tnode{position:relative;z-index:1;width:fit-content;margin:0 auto;background:var(--tile);border:1.5px solid var(--accent);border-radius:16px;padding:13px 18px;box-shadow:0 16px 36px -18px rgba(0,102,204,.4)}
+  .tnode .tag{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+  .tnode .it{display:flex;align-items:center;gap:10px}
+  .tnode .it .d{width:14px;height:14px;border-radius:50%;background:var(--accent)}
+  .tnode .it .t{font-size:16px;font-weight:600;letter-spacing:-.01em}
+
+  .tcols{display:flex;gap:clamp(12px,2.4vw,28px);justify-content:center;margin-top:64px;position:relative;z-index:1}
+  .tcol{flex:1;min-width:0}
+  .tp{background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 20px 44px -28px rgba(0,0,0,.22);height:100%}
+  .tp .cap{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:7px}
+  .tp .cap .pd{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .mrow{display:flex;align-items:center;gap:9px;padding:7px 6px;border-radius:8px;font-size:13px}
+  .mrow .rg{width:14px;height:14px;border-radius:50%;border:2px solid #D2D2D7;flex:0 0 auto}
+  .mrow.hot{background:var(--tint)} .mrow.hot .rg{border-color:var(--accent)}
+  .mrow.dim{color:#B7B7BC}.mrow.dim .rg{border-color:#E2E2E7}
+  .mgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .mc{aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;font-size:11.5px;color:#C2C2C7;border-radius:50%}
+  .mc.on{color:var(--ink)}
+  .mc.task::after{content:"";position:absolute;bottom:1px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.45}
+  .mc.hot{color:var(--accent);font-weight:700;box-shadow:inset 0 0 0 1.5px rgba(0,102,204,.55)}
+  .mc.hot::after{opacity:1}
+  .mtitle{font-size:11px;color:#B7B7BC;letter-spacing:.03em;margin-bottom:4px}
+  .mline{display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 6px;border-radius:8px}
+  .mline .bul{color:#C7C7CC;font-weight:700}
+  .mline.hot{background:var(--tint)} .mline.hot .bul{color:var(--accent)}
+  .mline.dim{color:#B7B7BC}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,36px);padding:clamp(48px,7vw,84px) 0;border-top:1px solid var(--line)}
+  .g3 .gi{width:34px;height:34px;border-radius:10px;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .g3 .gi .gdot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
+  .g3 h4{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .g3 p{color:var(--muted);font-size:15px;margin-top:8px;line-height:1.6}
+
+  .no-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);margin-top:8px}
+  .noitem .nemoji{font-size:30px;line-height:1;margin-bottom:14px}
+  .noitem h4{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .noitem p{color:var(--muted);font-size:14px;margin-top:7px;line-height:1.55}
+
+  .faq{max-width:720px;margin:0 auto}
+  .qa{padding:22px 0;border-top:1px solid var(--line)}
+  .qa:first-child{border-top:none}
+  .qa .q{font-weight:700;font-size:17px;letter-spacing:-.01em}
+  .qa .a{color:var(--muted);margin-top:8px;line-height:1.65;font-size:15.5px}
+
+  .closing{text-align:center;padding:clamp(64px,10vw,128px) 0 clamp(40px,6vw,70px);border-top:1px solid var(--line)}
+  .closing h2{font-size:clamp(30px,4.6vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.12}
+  .closing .price{color:var(--muted);font-size:15px;margin-top:20px}
+  .closing .actions{justify-content:center;margin-top:22px}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--muted);text-decoration:none;margin-left:18px;cursor:pointer}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:760px){.hero,.grid3{grid-template-columns:1fr}.no-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.tcols{flex-direction:column}.tcol{margin-bottom:12px}#links{display:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand"><div class="mark"><span class="dot"></span><span class="dash"></span></div><b>dottodash</b></div>
+  <div class="navright">
+    <span class="lang"><span id="lko" onclick="setLang('ko')">KO</span> · <span id="len" class="on" onclick="setLang('en')">EN</span></span>
+    <a class="navcta" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en="Get the app" data-ko="앱 다운로드">Get the app</a>
+  </div>
+</div></nav>
+
+<header class="wrap"><div class="hero">
+  <div>
+    <div class="eyebrow" data-en="One task. One line at a time." data-ko="오늘 할 일, 한 줄씩.">One task. One line at a time.</div>
+    <h1 data-en="Todo apps don't have to be complicated." data-ko="할 일 앱은 원래<br>단순해야 합니다.">Todo apps don't have to be complicated.</h1>
+    <p data-en="dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done." data-ko="할 일 앱은 자꾸 복잡해지잖아요. dottodash는 반대로 갑니다.<br>프로젝트도, 우선순위도, 태그도, 배울 것도 없어요.<br>그냥 열고, 적고, 해내면 돼요.">dottodash is built around one idea: a todo app should just work. No hierarchies, no tags, no learning curve. You open it, you write your tasks, you get things done.</p>
+    <div class="actions"><a class="btn" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en=" Download on the App Store" data-ko=" App Store에서 다운로드"> Download on the App Store</a><span class="meta" data-en="iPhone · iPad · iCloud sync" data-ko="iPhone · iPad · iCloud 동기화">iPhone · iPad · iCloud sync</span></div>
+  </div>
+  <div>
+    <div class="phone">
+      <div class="ph-mark"><span class="ph-dot"></span><span class="ph-dash"></span></div>
+      <div class="ph-label" data-en="Today" data-ko="오늘">Today</div><div class="ph-count">2 / 5</div>
+      <div class="row"><span class="ring done"></span><span class="tline done" data-en="Water the plants" data-ko="화분 물 주기">Water the plants</span></div>
+      <div class="row"><span class="ring done"></span><span class="tline done" data-en="Reply to Mom" data-ko="엄마한테 답장">Reply to Mom</span></div>
+      <div class="row"><span class="ring"></span><span class="tline" data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
+      <div class="row"><span class="ring"></span><span class="tline" data-en="Go for a walk" data-ko="산책하기">Go for a walk</span></div>
+      <div class="row"><span class="ring"></span><span class="tline" data-en="Buy groceries" data-ko="장보기">Buy groceries</span></div>
+      <div class="bar"><i></i></div>
+    </div>
+  </div>
+</div></header>
+
+<section class="band wrap"><div class="reveal">
+  <h2><span data-en="No hierarchies. No tags. " data-ko="프로젝트도, 우선순위도, 태그도 없어요.<br>">No hierarchies. No tags. </span><span class="dim" data-en="Just your tasks for today — written the way you think." data-ko="그저 오늘 할 일만, 메모하듯 한 줄씩 적으면 돼요.">Just your tasks for today — written the way you think.</span></h2>
+</div></section>
+
+<section class="sect wrap">
+  <div class="shead reveal">
+    <div class="lead" data-en="One task, every view" data-ko="한 번만 적으면 돼요">One task, every view</div>
+    <h2 data-en="Write it once. See it the way that fits." data-ko="한 번만 적으면,<br>세 화면에 똑같이 나타나요.">Write it once. See it the way that fits.</h2>
+    <p class="ssub" data-en="The same task lives in your day, your month, and your notes — never re-entered, always in sync." data-ko="같은 할 일이 오늘에도, 캘린더에도, 투두에도 그대로 있어요.<br>다시 적을 필요 없이, 늘 똑같이 이어져요.">The same task lives in your day, your month, and your notes — never re-entered, always in sync.</p>
+  </div>
+  <div class="tree">
+    <svg id="links"><path/></svg>
+    <div class="tnode"><div class="tag" data-en="Your task" data-ko="내 할 일">Your task</div><div class="it"><span class="d"></span><span class="t" data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div></div>
+    <div class="tcols">
+      <div class="tcol"><div class="tp">
+        <div class="cap"><span class="pd"></span><span data-en="Today" data-ko="오늘">Today</span></div>
+        <div class="mrow dim"><span class="rg"></span><span data-en="Water the plants" data-ko="화분 물 주기">Water the plants</span></div>
+        <div class="mrow hot"><span class="rg"></span><span data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
+        <div class="mrow dim"><span class="rg"></span><span data-en="Go for a walk" data-ko="산책하기">Go for a walk</span></div>
+      </div></div>
+      <div class="tcol"><div class="tp">
+        <div class="cap"><span class="pd"></span><span data-en="Calendar" data-ko="캘린더">Calendar</span></div>
+        <div class="mgrid">
+          <div class="mc on">17</div><div class="mc on task">18</div><div class="mc on task">19</div><div class="mc on">20</div><div class="mc hot task">21</div>
+          <div class="mc task">22</div><div class="mc">23</div><div class="mc task">24</div><div class="mc">25</div><div class="mc">26</div>
+        </div>
+      </div></div>
+      <div class="tcol"><div class="tp">
+        <div class="cap"><span class="pd"></span><span data-en="Todo" data-ko="투두">Todo</span></div>
+        <div class="mtitle" data-en="May 21" data-ko="5월 21일">May 21</div>
+        <div class="mline hot"><span class="bul">–</span><span data-en="Read 20 pages" data-ko="20쪽 읽기">Read 20 pages</span></div>
+        <div class="mline"><span class="bul">–</span><span data-en="Call Mom" data-ko="엄마한테 전화">Call Mom</span></div>
+        <div class="mline dim"><span class="bul">–</span><span data-en="Buy groceries" data-ko="장보기">Buy groceries</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap"><div class="grid3">
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Look back" data-ko="지난 할 일도 챙기기">Look back</h4><p data-en="Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap." data-ko="어제, 그제, 3일 전 할 일을 쉽게 돌아보고, 못 다 한 일은 탭 한 번으로 오늘로 가져와요.">Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="iCloud sync" data-ko="iCloud 자동 동기화">iCloud sync</h4><p data-en="Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you." data-ko="iPhone과 iPad 어디서나 이어서. 기기를 바꿔도 할 일은 그대로 따라와요.">Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Quiet design" data-ko="조용한 디자인">Quiet design</h4><p data-en="One accent color, automatic dark mode. The app recedes so your tasks can stand out." data-ko="하나의 포인트 컬러와 다크 모드. 앱은 물러나고, 할 일이 주인공이 돼요.">One accent color, automatic dark mode. The app recedes so your tasks can stand out.</p></div>
+</div></section>
+
+<section class="sect wrap">
+  <div class="shead reveal">
+    <div class="lead" data-en="No noise" data-ko="군더더기 없음">No noise</div>
+    <h2 data-en="What you won't find." data-ko="여기엔 없는 것들.">What you won't find.</h2>
+    <p class="ssub" data-en="The complexity you escaped — gone for good." data-ko="그동안 당신을 지치게 한 복잡함은, 여기 없어요.">The complexity you escaped — gone for good.</p>
+  </div>
+  <div class="no-grid reveal">
+    <div class="noitem"><div class="nemoji">🪪</div><h4 data-en="No accounts" data-ko="계정 없음">No accounts</h4><p data-en="No sign-up. Open the app and start." data-ko="가입 없이, 열면 바로 시작해요.">No sign-up. Open the app and start.</p></div>
+    <div class="noitem"><div class="nemoji">💳</div><h4 data-en="No subscription" data-ko="구독 없음">No subscription</h4><p data-en="Buy once. It's yours." data-ko="한 번 사면, 계속 당신 거예요.">Buy once. It's yours.</p></div>
+    <div class="noitem"><div class="nemoji">📢</div><h4 data-en="No ads" data-ko="광고 없음">No ads</h4><p data-en="Nothing competing for your attention." data-ko="집중을 방해하는 게 하나도 없어요.">Nothing competing for your attention.</p></div>
+    <div class="noitem"><div class="nemoji">📍</div><h4 data-en="No tracking" data-ko="추적 없음">No tracking</h4><p data-en="Your tasks stay yours. We never see them." data-ko="할 일은 당신 거예요. 저희는 들여다보지 않아요.">Your tasks stay yours. We never see them.</p></div>
+  </div>
+</section>
+
+<section class="sect wrap" id="faq">
+  <div class="shead reveal">
+    <div class="lead" data-en="Good to know" data-ko="알아두면 좋아요">Good to know</div>
+    <h2 data-en="Questions, answered." data-ko="자주 묻는 질문.">Questions, answered.</h2>
+  </div>
+  <div class="faq reveal">
+    <div class="qa"><div class="q" data-en="Is it a subscription?" data-ko="구독인가요?">Is it a subscription?</div><div class="a" data-en="No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees." data-ko="아니요, 1회 구매예요. 한 번 사면 계속 쓰는 앱이라 정기 결제가 없어요.">No. dottodash is a one-time purchase — buy it once and it's yours, no recurring fees.</div></div>
+    <div class="qa"><div class="q" data-en="Where is my data stored?" data-ko="데이터는 어디에 저장되나요?">Where is my data stored?</div><div class="a" data-en="On your device, and synced privately through your own iCloud. We have no servers and never see your tasks." data-ko="기기에 저장되고, 본인 iCloud로만 동기화돼요. 저희는 서버가 없어서 할 일을 볼 수 없어요.">On your device, and synced privately through your own iCloud. We have no servers and never see your tasks.</div></div>
+    <div class="qa"><div class="q" data-en="iPhone and iPad only?" data-ko="iPhone·iPad만 되나요?">iPhone and iPad only?</div><div class="a" data-en="Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad." data-ko="네, iOS 전용이에요. iPhone과 iPad에서 동기화돼 이어져요.">Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad.</div></div>
+    <div class="qa"><div class="q" data-en="Do I need to set anything up?" data-ko="따로 설정할 게 있나요?">Do I need to set anything up?</div><div class="a" data-en="No. There's nothing to configure — open the app and write your first task." data-ko="아니요, 설정할 게 없어요. 열어서 첫 할 일만 적으면 돼요.">No. There's nothing to configure — open the app and write your first task.</div></div>
+  </div>
+</section>
+
+<section class="closing wrap"><div class="reveal">
+  <h2 data-en="Less app. More done." data-ko="더 많은 기능보다,<br>더 자주 열게 되는 앱.">Less app. More done.</h2>
+  <div class="price" data-en="$2.99 · one-time purchase · no subscription" data-ko="₩4,900 · 1회 구매 · 구독 없음">$2.99 · one-time purchase · no subscription</div>
+  <div class="actions"><a class="btn" href="https://apps.apple.com/app/dottodash/id6772737246" target="_blank" rel="noopener" data-en=" Download on the App Store" data-ko=" App Store에서 다운로드"> Download on the App Store</a></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 dottodash</span><span><a href="https://daisy-tellurium-50b.notion.site/dottodash-Privacy-Policy-36a3a23ed534807183cee9cafa0f3478" target="_blank" rel="noopener" data-en="Privacy" data-ko="개인정보처리방침">Privacy</a><a href="#faq" data-en="Support" data-ko="고객지원">Support</a><a id="langlink" onclick="setLang(document.documentElement.lang==='en'?'ko':'en')" data-en="한국어" data-ko="English">한국어</a></span></div></footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-'+l+']').forEach(e=>{e.innerHTML=e.getAttribute('data-'+l)});
+    document.getElementById('len').classList.toggle('on',l==='en');
+    document.getElementById('lko').classList.toggle('on',l==='ko');
+    requestAnimationFrame(drawLinks);
+  }
+  function drawLinks(){
+    const tree=document.querySelector('.tree'); if(!tree)return;
+    const svg=document.getElementById('links'); const path=svg.querySelector('path');
+    const node=document.querySelector('.tnode'); const cols=[...document.querySelectorAll('.tcol .tp')];
+    const tb=tree.getBoundingClientRect();
+    svg.setAttribute('viewBox','0 0 '+tb.width+' '+tb.height);
+    const nr=node.getBoundingClientRect();
+    const x0=nr.left+nr.width/2-tb.left, y0=nr.bottom-tb.top;
+    let d='';
+    cols.forEach(c=>{const r=c.getBoundingClientRect();
+      const x1=r.left+r.width/2-tb.left, y1=r.top-tb.top; const my=(y0+y1)/2;
+      d+='M'+x0+','+y0+' C'+x0+','+my+' '+x1+','+my+' '+x1+','+y1+' ';});
+    path.setAttribute('d',d.trim());
+  }
+  window.addEventListener('load',()=>{drawLinks();setTimeout(drawLinks,300)});
+  window.addEventListener('resize',drawLinks);
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  drawLinks();
+</script>
+</body>
+</html>
