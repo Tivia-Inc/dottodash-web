@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>dottodash — the simple to-do app for iPhone &amp; iPad</title>
+<title>dottodash — a todo you actually finish</title>
 <meta name="description" content="A todo you actually finish — stay, hold, or photograph the moment to complete it. Free, with Pro. iPhone &amp; iPad, iCloud sync.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="dottodash — the simple to-do app">
+<meta property="og:title" content="dottodash — a todo you actually finish">
 <meta property="og:description" content="A todo you actually finish — stay, hold, or photograph the moment to complete it. Free, with Pro. iPhone &amp; iPad, iCloud sync.">
 <meta property="og:image" content="assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,9 +18,9 @@
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
   .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
-  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.noitem h4,.noitem p,.qa .q,.qa .a{word-break:keep-all}
+  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a{word-break:keep-all}
   h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p{text-wrap:balance}
-  html[lang="ja"] :is(h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.noitem h4,.noitem p,.qa .q,.qa .a){word-break:normal;line-break:strict}
+  html[lang="ja"] :is(h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a){word-break:normal;line-break:strict}
 
   nav{position:sticky;top:0;z-index:20;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -96,11 +96,6 @@
   .g3 h4{font-size:18px;font-weight:700;letter-spacing:-.01em}
   .g3 p{color:var(--muted);font-size:15px;margin-top:8px;line-height:1.6}
 
-  .no-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,32px);margin-top:8px}
-  .noitem .nemoji{font-size:30px;line-height:1;margin-bottom:14px}
-  .noitem h4{font-size:17px;font-weight:700;letter-spacing:-.01em}
-  .noitem p{color:var(--muted);font-size:14px;margin-top:7px;line-height:1.55}
-
   .faq{max-width:720px;margin:0 auto}
   .qa{padding:22px 0;border-top:1px solid var(--line)}
   .qa:first-child{border-top:none}
@@ -122,7 +117,7 @@
 
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
-  @media(max-width:760px){.hero,.grid3{grid-template-columns:1fr}.no-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:760px){.hero,.grid3{grid-template-columns:1fr}}
   @media(max-width:560px){.tcols{flex-direction:column}.tcol{margin-bottom:12px}#links{display:none}}
 </style>
 </head>
