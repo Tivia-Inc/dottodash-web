@@ -158,6 +158,7 @@
   .tryring.done{animation:trypop .4s ease}
   @keyframes trypop{0%{transform:scale(.92)}55%{transform:scale(1.07)}100%{transform:scale(1)}}
   .trycap{color:var(--muted);font-size:14px;margin-top:20px}
+  .trynote{color:var(--muted);opacity:.68;font-size:12.5px;margin-top:10px}
   /* v2: hero aurora + motion polish */
   header.wrap{position:relative}
   .aurora{position:absolute;inset:0;z-index:0;pointer-events:none;filter:blur(20px);opacity:.85;background:radial-gradient(38% 46% at 22% 26%,rgba(0,102,204,.20),transparent 72%),radial-gradient(32% 42% at 84% 18%,rgba(0,102,204,.14),transparent 72%),radial-gradient(44% 40% at 66% 70%,rgba(0,102,204,.10),transparent 72%);animation:drift 16s ease-in-out infinite alternate}
@@ -204,6 +205,7 @@
   <h2><span data-en="You can check it off without doing it." data-ko="체크만으론, 아무것도 안 바뀌어요." data-ja="やらなくても、チェックはできてしまう。">You can check it off without doing it.</span> <span class="dim" data-en="So in dottodash, the ring fills only when you've really done it." data-ko="그래서 dottodash의 완료는, 진짜로 했을 때만 채워져요." data-ja="だからdottodashの完了は、本当にやったときだけ満ちます。">So in dottodash, the ring fills only when you've really done it.</span></h2>
   <div class="tryring" id="tryring" role="button" tabindex="0" aria-label="Hold to complete"><svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52"/></svg><span class="trylabel" id="trylabel" data-en="Hold" data-ko="꾹" data-ja="長押し">Hold</span></div>
   <p class="trycap" data-en="Go on — press and hold to complete it. Let go too soon and it snaps back." data-ko="직접 해보세요 — 꾹 눌러서 완료. 손을 떼면 처음으로 돌아가요." data-ja="やってみて — 長押しで完了。離すと最初に戻ります。">Go on — press and hold to complete it. Let go too soon and it snaps back.</p>
+  <p class="trynote" data-en="* And new ways to complete keep coming." data-ko="* 완료 방식은 앞으로도 계속 늘어나요." data-ja="* 完了の方法は、これからも増えていきます。">* And new ways to complete keep coming.</p>
 </div></section>
 
 <section class="sect wrap" id="modes">
