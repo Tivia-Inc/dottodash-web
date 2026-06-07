@@ -117,6 +117,7 @@
 
   /* v2: screenshot frames */
   .shot{width:240px;max-width:100%;display:block;border-radius:32px;box-shadow:0 30px 60px -26px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.05)}
+  .archiveshot{width:100%;max-width:560px;display:block;border-radius:20px;border:1px solid var(--line);background:var(--tile);box-shadow:0 24px 50px -30px rgba(0,0,0,.16)}
   .shot.sheet{width:300px;border-radius:24px}
   .shot.sm{width:208px;border-radius:28px}
   .figure{display:flex;flex-direction:column;align-items:center;gap:13px;margin-top:clamp(28px,5vw,48px)}
@@ -233,10 +234,10 @@
     <div class="protag">✦ PRO</div>
     <div class="lead" data-en="An honest record" data-ko="정직한 기록" data-ja="正直な記録">An honest record</div>
     <h2 data-en="Only the days you showed up stay on the record." data-ko="해낸 날만, 기록에 남아요." data-ja="やり遂げた日だけが、記録に残ります。">Only the days you showed up stay on the record.</h2>
-    <p class="ssub" data-en="An honestly-earned month becomes a one-of-a-kind Dot Matrix — the days you skipped stay empty. No auto-fill, no backfilling. Each dot is colored by how you finished." data-ko="정직하게 채운 한 달은 하나뿐인 도트 매트릭스가 되고, 건너뛴 날은 빈 구멍으로 남아요. 자동 채움도, 소급 입력도 없어요. 점 색은 완료한 방식에 따라 달라져요." data-ja="正直に満たした一か月は、ひとつだけのドットマトリクスに。サボった日は空いた穴のまま。自動入力も、さかのぼり入力もありません。点の色は、終えた方法で決まります。">An honestly-earned month becomes a one-of-a-kind Dot Matrix — the days you skipped stay empty. No auto-fill, no backfilling. Each dot is colored by how you finished.</p>
+    <p class="ssub" data-en="Each thing you finish is one dot. An honestly-earned month becomes a one-of-a-kind Dot Matrix, and the days you skipped stay blank — no auto-fill, no backfilling." data-ko="끝낸 일 하나가 점 하나예요. 정직하게 채운 한 달은 하나뿐인 도트 매트릭스가 되고, 건너뛴 날은 빈자리로 남아요 — 자동 채움도, 소급도 없이." data-ja="終えたこと一つが、点ひとつ。正直に満たした一か月は、ひとつだけのドットマトリクスになり、サボった日は空白のまま — 自動入力も、さかのぼり入力もありません。">Each thing you finish is one dot. An honestly-earned month becomes a one-of-a-kind Dot Matrix, and the days you skipped stay blank — no auto-fill, no backfilling.</p>
   </div>
   <div class="figure reveal">
-    <img class="shot" loading="lazy" src="assets/v2-archive-en.png?v=1" alt="Dot Matrix archive" data-en-src="assets/v2-archive-en.png?v=1" data-ko-src="assets/v2-archive-ko.png?v=1" data-ja-src="assets/v2-archive-ja.png?v=1">
+    <img class="archiveshot" loading="lazy" src="assets/v2-archive.png?v=1" alt="Dot Matrix archive — each dot is a task you finished; blanks are days you skipped">
   </div>
 </section>
 
