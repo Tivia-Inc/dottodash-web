@@ -188,6 +188,12 @@
     .badge.sm svg{width:18px;height:21px}
     .badge.sm .bt{display:none}
   }
+  /* .band/.sect/.closing combine their class with .wrap on the same element, and their
+     `padding: V 0` shorthand resets .wrap's horizontal gutter to 0 — so on narrow screens
+     (no auto-margin room) content touched the edges while the pure-.wrap hero did not.
+     Restore the side gutter on phone/tablet only; wide desktop is unchanged (max-width:1080
+     + margin:auto already centers it, which is why PC looked fine). */
+  @media(max-width:900px){.band,.sect,.closing{padding-left:clamp(28px,5vw,48px);padding-right:clamp(28px,5vw,48px)}}
 </style>
 </head>
 <body>
