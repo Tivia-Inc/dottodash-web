@@ -177,6 +177,17 @@
   .reveal.in{opacity:1;transform:none}
   @media(max-width:760px){.hero,.grid3,.modes,.plans{grid-template-columns:1fr}.shots.two{grid-template-columns:1fr}}
   @media(max-width:560px){.tcols{flex-direction:column}.tcol{margin-bottom:12px}#links{display:none}}
+  /* phone nav: lang toggle never wraps; collapse the nav App Store badge to an icon-only
+     pill so the longer EN/JA labels can't overflow (a full labeled CTA sits in the hero below) */
+  @media(max-width:520px){
+    nav .wrap{height:54px}
+    .brand b{font-size:16px}
+    .navright{gap:14px}
+    .lang{white-space:nowrap;font-size:13px;flex:0 0 auto}
+    .badge.sm{padding:7px;gap:0}
+    .badge.sm svg{width:18px;height:21px}
+    .badge.sm .bt{display:none}
+  }
 </style>
 </head>
 <body>
