@@ -18,9 +18,10 @@
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,"Apple SD Gothic Neo",system-ui,sans-serif;background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
   .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(28px,5vw,48px)}
-  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a{word-break:keep-all}
+  h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a,.trycap,.trynote,.mode p,.plan li{word-break:keep-all}
   h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p{text-wrap:balance}
-  html[lang="ja"] :is(h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a){word-break:normal;line-break:strict}
+  .nw{white-space:nowrap}
+  html[lang="ja"] :is(h1,.band h2,.sect h2,.closing h2,.sect .ssub,.hero p,.g3 h4,.g3 p,.qa .q,.qa .a,.trycap,.trynote,.mode p,.plan li){word-break:normal;line-break:strict}
 
   nav{position:sticky;top:0;z-index:20;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -160,6 +161,14 @@
   @keyframes trypop{0%{transform:scale(.92)}55%{transform:scale(1.07)}100%{transform:scale(1)}}
   .trycap{color:var(--muted);font-size:14px;margin-top:20px}
   .trynote{color:var(--muted);opacity:.68;font-size:12.5px;margin-top:10px}
+  /* v2.1: theme swatches */
+  .swatches{display:flex;justify-content:center;align-items:flex-start;gap:clamp(14px,3vw,30px);flex-wrap:wrap;margin-top:clamp(28px,5vw,44px)}
+  .sw{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;border:none;background:none;font:inherit;padding:0}
+  .sw .swc{width:54px;height:54px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(0,0,0,.08);transition:transform .2s ease}
+  .sw:hover .swc{transform:scale(1.12)}
+  .sw.on .swc{box-shadow:inset 0 0 0 2px rgba(0,0,0,.08),0 0 0 3px var(--canvas),0 0 0 5px var(--accent)}
+  .sw span{font-size:12.5px;color:var(--muted);font-weight:600}
+  @media(prefers-reduced-motion:reduce){.sw .swc{transition:none}}
   /* v2: hero aurora + motion polish */
   header.wrap{position:relative}
   .aurora{position:absolute;inset:0;z-index:0;pointer-events:none;filter:blur(20px);opacity:.85;background:radial-gradient(38% 46% at 22% 26%,rgba(0,102,204,.20),transparent 72%),radial-gradient(32% 42% at 84% 18%,rgba(0,102,204,.14),transparent 72%),radial-gradient(44% 40% at 66% 70%,rgba(0,102,204,.10),transparent 72%);animation:drift 16s ease-in-out infinite alternate}
@@ -220,7 +229,7 @@
 </div></header>
 
 <section class="band wrap"><div class="reveal">
-  <h2><span data-en="You can check it off without doing it." data-ko="체크만으론, 아무것도 안 바뀌어요." data-ja="やらなくても、チェックはできてしまう。">You can check it off without doing it.</span> <span class="dim" data-en="So in dottodash, the ring fills only when you've really done it." data-ko="그래서 dottodash의 완료는, 진짜로 했을 때만 채워져요." data-ja="だからdottodashの完了は、本当にやったときだけ満ちます。">So in dottodash, the ring fills only when you've really done it.</span></h2>
+  <h2><span data-en="A check is so easy, <span class='nw'>it keeps fooling you.</span>" data-ko="<span class='nw'>체크는 너무 쉬워서,</span> <span class='nw'>자꾸 나를 속여요.</span>" data-ja="<span class='nw'>チェックは簡単すぎて、</span><span class='nw'>つい自分をだましてしまう。</span>">A check is so easy, <span class="nw">it keeps fooling you.</span></span> <span class="dim" data-en="<span class='nw'>So in dottodash,</span> the ring fills only when you've <span class='nw'>really done it.</span>" data-ko="<span class='nw'>그래서 dottodash의 완료는,</span> <span class='nw'>진짜로 했을 때만 채워져요.</span>" data-ja="<span class='nw'>だからdottodashの完了は、</span><span class='nw'>本当にやったときだけ満ちます。</span>"><span class="nw">So in dottodash,</span> the ring fills only when you've <span class="nw">really done it.</span></span></h2>
   <div class="tryring" id="tryring" role="button" tabindex="0" aria-label="Hold to complete"><svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52"/></svg><span class="trylabel" id="trylabel" data-en="Hold" data-ko="꾹" data-ja="長押し">Hold</span></div>
   <p class="trycap" data-en="Go on — press and hold to complete it. Let go too soon and it snaps back." data-ko="직접 해보세요 — 꾹 눌러서 완료. 손을 떼면 처음으로 돌아가요." data-ja="やってみて — 長押しで完了。離すと最初に戻ります。">Go on — press and hold to complete it. Let go too soon and it snaps back.</p>
   <p class="trynote" data-en="* And new ways to complete keep coming." data-ko="* 완료 방식은 앞으로도 계속 늘어나요." data-ja="* 完了の方法は、これからも増えていきます。">* And new ways to complete keep coming.</p>
@@ -230,7 +239,7 @@
   <div class="shead reveal">
     <div class="lead" data-en="Completion modes" data-ko="완료 방식" data-ja="完了モード">Completion modes</div>
     <h2 data-en="One tap won't finish it." data-ko="한 번의 탭으로는 끝나지 않아요." data-ja="ワンタップでは終わりません。">One tap won't finish it.</h2>
-    <p class="ssub" data-en="Pick how you'll finish each task — then it's done only when you actually do it." data-ko="할 일에 맞는 완료 방식을 고르세요. 그 방식대로 해야 완료돼요." data-ja="タスクごとに、終わらせ方を選びます。その方法でこなして、はじめて完了です。">Pick how you'll finish each task — then it's done only when you actually do it.</p>
+    <p class="ssub" data-en="Give every task a small mission — it's done only when you actually <span class='nw'>pull it off.</span>" data-ko="<span class='nw'>할 일마다 작은 미션을 붙이세요.</span> <span class='nw'>그대로 해내야만 완료돼요.</span>" data-ja="<span class='nw'>タスクごとに小さなミッションを。</span><span class='nw'>そのとおりにこなして、</span><span class='nw'>はじめて完了です。</span>">Give every task a small mission — it's done only when you actually <span class="nw">pull it off.</span></p>
   </div>
   <div class="modes reveal">
     <div class="modeshot">
@@ -295,8 +304,28 @@
 <section class="wrap"><div class="grid3">
   <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Look back" data-ko="지난 할 일도 챙기기" data-ja="過去のタスクも逃さない">Look back</h4><p data-en="Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap." data-ko="어제, 그제, 3일 전 할 일을 쉽게 돌아보고, 못 다 한 일은 탭 한 번으로 오늘로 가져와요." data-ja="昨日・一昨日・3日前のタスクをかんたんに振り返り、終わらなかったものはワンタップで今日へ。">Yesterday, two days ago, three days ago — bring anything unfinished into today with one tap.</p></div>
   <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="iCloud sync" data-ko="iCloud 자동 동기화" data-ja="iCloud自動同期">iCloud sync</h4><p data-en="Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you." data-ko="iPhone과 iPad 어디서나 이어서. 기기를 바꿔도 할 일은 그대로 따라와요." data-ja="iPhoneとiPadでそのまま続き。機種を変えても、タスクはついてきます。">Pick up where you left off across iPhone and iPad. Switch devices, your tasks come with you.</p></div>
-  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Dark mode &amp; themes" data-ko="다크 모드와 테마" data-ja="ダークモードとテーマ">Dark mode &amp; themes</h4><p data-en="Automatic dark mode, plus six accent themes in Pro. The app recedes so your tasks can stand out." data-ko="자동 다크 모드와 Pro의 6가지 테마. 앱은 물러나고, 할 일이 주인공이 돼요." data-ja="自動ダークモードと、Proの6つのテーマ。アプリは控えめに、タスクが主役に。">Automatic dark mode, plus six accent themes in Pro. The app recedes so your tasks can stand out.</p></div>
+  <div class="g3 reveal"><div class="gi"><span class="gdot"></span></div><h4 data-en="Widgets &amp; Lock Screen" data-ko="위젯과 잠금화면" data-ja="ウィジェットとロック画面">Widgets &amp; Lock Screen</h4><p data-en="See what's left without opening the app — Home and Lock Screen widgets, and timers that run live on the Lock Screen." data-ko="앱을 안 열어도 바로 확인. 홈·잠금 화면 위젯에, 타이머는 잠금화면에서 실시간으로 흘러가요." data-ja="アプリを開かずにすぐ確認。ホーム・ロック画面ウィジェットに、タイマーはロック画面でリアルタイムに進みます。">See what's left without opening the app — Home and Lock Screen widgets, and timers that run live on the Lock Screen.</p></div>
 </div></section>
+
+<section class="sect wrap" id="themes">
+  <div class="shead reveal">
+    <div class="protag">✦ PRO</div>
+    <div class="lead" data-en="Themes" data-ko="테마" data-ja="テーマ">Themes</div>
+    <h2 data-en="Swap skins <span class='nw'>to match your mood.</span>" data-ko="<span class='nw'>기분 따라,</span> <span class='nw'>스킨을 갈아끼워요.</span>" data-ja="<span class='nw'>気分で、スキンを着せ替え。</span>">Swap skins <span class="nw">to match your mood.</span></h2>
+    <p class="ssub" data-en="Automatic dark mode comes standard. Pro adds six skins that recolor the whole app — it recedes, so your tasks <span class='nw'>stand out.</span>" data-ko="<span class='nw'>자동 다크 모드는 기본.</span> <span class='nw'>Pro의 6가지 스킨으로</span> <span class='nw'>앱의 분위기를 통째로 바꿔요.</span> <span class='nw'>앱은 물러나고,</span> <span class='nw'>할 일이 주인공이 되도록.</span>" data-ja="<span class='nw'>自動ダークモードは標準装備。</span><span class='nw'>Proの6つのスキンで、</span><span class='nw'>アプリの雰囲気をまるごと着せ替え。</span><span class='nw'>アプリは控えめに、</span><span class='nw'>タスクが主役に。</span>">Automatic dark mode comes standard. Pro adds six skins that recolor the whole app — it recedes, so your tasks <span class="nw">stand out.</span></p>
+  </div>
+  <div class="reveal" style="text-align:center">
+    <div class="swatches" role="group" aria-label="Theme colors">
+      <button type="button" class="sw on" data-c="#0066CC"><span class="swc" style="background:#0066CC"></span><span>Classic</span></button>
+      <button type="button" class="sw" data-c="#273D8A"><span class="swc" style="background:#273D8A"></span><span>Midnight</span></button>
+      <button type="button" class="sw" data-c="#D9582F"><span class="swc" style="background:#D9582F"></span><span>Sunset</span></button>
+      <button type="button" class="sw" data-c="#575C64"><span class="swc" style="background:#575C64"></span><span>Titanium</span></button>
+      <button type="button" class="sw" data-c="#D6477E"><span class="swc" style="background:#D6477E"></span><span>Sakura</span></button>
+      <button type="button" class="sw" data-c="#6C4DD6"><span class="swc" style="background:#6C4DD6"></span><span>Violet</span></button>
+    </div>
+    <p class="trycap" data-en="Tap one — this whole page <span class='nw'>takes the color.</span>" data-ko="눌러보세요 — <span class='nw'>이 페이지가 통째로</span> <span class='nw'>그 색으로 물들어요.</span>" data-ja="タップしてみて — <span class='nw'>このページがまるごと</span><span class='nw'>その色に染まります。</span>">Tap one — this whole page <span class="nw">takes the color.</span></p>
+  </div>
+</section>
 
 <section class="sect wrap" id="pro">
   <div class="shead reveal">
@@ -335,6 +364,7 @@
   <div class="faq reveal">
     <div class="qa"><div class="q" data-en="Is dottodash free?" data-ko="dottodash는 무료인가요?" data-ja="dottodashは無料ですか？">Is dottodash free?</div><div class="a" data-en="Yes — dottodash is free to download. Pro is an optional subscription that removes ads and unlocks every mode and theme." data-ko="네, 무료로 받을 수 있어요. Pro는 선택 구독으로, 광고를 없애고 모든 완료 방식과 테마를 열어줘요." data-ja="はい、無料でダウンロードできます。Proはオプションのサブスクリプションで、広告を消してすべての完了モードとテーマを開きます。">Yes — dottodash is free to download. Pro is an optional subscription that removes ads and unlocks every mode and theme.</div></div>
     <div class="qa"><div class="q" data-en="What are completion modes?" data-ko="완료 방식이 뭔가요?" data-ja="完了モードとは？">What are completion modes?</div><div class="a" data-en="Five ways to finish a task — count, timer, hold, photo, and stay. Each asks for a real action, so a check is hard to fake. They're part of Pro." data-ko="할 일을 끝내는 다섯 가지 방식이에요 — 횟수 · 타이머 · 길게 · 사진 · 집중. 각 방식이 진짜 행동을 요구해서 체크를 가짜로 만들기 어려워요. Pro에 포함돼요." data-ja="タスクを終える5つの方法です — 回数・タイマー・長押し・写真・集中。どれも本物の行動を求めるので、チェックをごまかしにくくなります。Proに含まれます。">Five ways to finish a task — count, timer, hold, photo, and stay. Each asks for a real action, so a check is hard to fake. They're part of Pro.</div></div>
+    <div class="qa"><div class="q" data-en="How is it different from a notes app?" data-ko="메모앱이랑 뭐가 다른가요?" data-ja="メモアプリと何が違いますか？">How is it different from a notes app?</div><div class="a" data-en="In a notes or reminders app you can cross anything out without doing it. In dottodash every task carries a small mission, so it ends only when you actually do it — and one entry shows up across Today, Calendar, and Todo, with yesterday's leftovers one tap away." data-ko="메모장이나 기본 미리알림에선 아무것도 안 해도 지울 수 있어요. dottodash는 할 일마다 작은 미션이 붙어서 진짜로 해야 끝나요. 게다가 한 번 적으면 오늘·캘린더·할일에서 같이 보이고, 어제 못 한 일도 탭 한 번으로 가져와요." data-ja="メモアプリやリマインダーでは、やらなくても消せてしまいます。dottodashはタスクごとに小さなミッションが付き、本当にやらないと終わりません。しかも一度書けば今日・カレンダー・ToDoに同じように現れ、昨日の残りもワンタップで持ってこられます。">In a notes or reminders app you can cross anything out without doing it. In dottodash every task carries a small mission, so it ends only when you actually do it — and one entry shows up across Today, Calendar, and Todo, with yesterday's leftovers one tap away.</div></div>
     <div class="qa"><div class="q" data-en="Where is my data stored?" data-ko="데이터는 어디에 저장되나요?" data-ja="データはどこに保存されますか？">Where is my data stored?</div><div class="a" data-en="On your device, and synced privately through your own iCloud — we have no servers and never see your tasks. Ads on the free tier are served by Google AdMob, and a tracking-permission prompt appears at first launch; Pro removes the ads." data-ko="기기에 저장되고, 본인 iCloud로만 동기화돼요. 저희는 서버가 없어서 할 일을 볼 수 없어요. 무료 버전의 광고는 Google AdMob이 제공하고, 첫 실행 때 추적 동의 안내가 떠요. Pro는 광고를 없애줍니다." data-ja="端末に保存され、ご自身のiCloudだけで同期されます。私たちはサーバーを持たず、タスクを見ることはできません。無料版の広告はGoogle AdMobが配信し、初回起動時に追跡許可の案内が表示されます。Proは広告を消します。">On your device, and synced privately through your own iCloud — we have no servers and never see your tasks. Ads on the free tier are served by Google AdMob, and a tracking-permission prompt appears at first launch; Pro removes the ads.</div></div>
     <div class="qa"><div class="q" data-en="iPhone and iPad only?" data-ko="iPhone·iPad만 되나요?" data-ja="iPhone・iPadだけですか？">iPhone and iPad only?</div><div class="a" data-en="Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad." data-ko="네, iOS 전용이에요. iPhone과 iPad에서 동기화돼 이어져요." data-ja="はい、iOS専用です。iPhoneとiPadで同期して使えます。">Yes — dottodash is designed for iOS, and stays in sync across your iPhone and iPad.</div></div>
     <div class="qa"><div class="q" data-en="Do I need to set anything up?" data-ko="따로 설정할 게 있나요?" data-ja="設定は必要ですか？">Do I need to set anything up?</div><div class="a" data-en="No. There's nothing to configure — open the app and write your first task." data-ko="아니요, 설정할 게 없어요. 열어서 첫 할 일만 적으면 돼요." data-ja="いいえ、設定は不要です。開いて最初のタスクを書くだけ。">No. There's nothing to configure — open the app and write your first task.</div></div>
@@ -342,7 +372,7 @@
 </section>
 
 <section class="closing wrap"><div class="reveal">
-  <h2 data-en="No fake checks. Just done." data-ko="가짜 체크는 없어요. 진짜로 끝낸 것만." data-ja="偽のチェックはなし。本当に終えたものだけ。">No fake checks. Just done.</h2>
+  <h2 data-en="No fake checks.<br>Start really finishing — today." data-ko="가짜 체크는 없어요.<br>오늘부터, 진짜로 끝내보세요." data-ja="偽のチェックはなし。<br>今日から、本当に終わらせよう。">No fake checks.<br>Start really finishing — today.</h2>
   <div class="price" data-en="Free to download. Pro removes ads and unlocks all modes + themes." data-ko="무료로 받으세요. Pro는 광고를 없애고 모든 완료 방식과 테마를 열어줍니다." data-ja="無料でダウンロード。Proは広告を消し、すべての完了モードとテーマを開きます。">Free to download. Pro removes ads and unlocks all modes + themes.</div>
   <div class="actions"><a class="badge" href="https://apps.apple.com/app/dottodash/id6772737246?platform=iphone" target="_blank" rel="noopener"><svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="bt"><span class="t1" data-en="Download on the" data-ko="App Store에서" data-ja="App Storeで">Download on the</span><span class="t2" data-en="App Store" data-ko="다운로드" data-ja="ダウンロード">App Store</span></span></a></div>
 </div></section>
@@ -389,6 +419,18 @@
     var n = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
     var lang = n.indexOf('ko') === 0 ? 'ko' : n.indexOf('ja') === 0 ? 'ja' : 'en';
     if (lang !== 'en') setLang(lang);
+  })();
+  (function(){
+    var sws=document.querySelectorAll('.sw'); if(!sws.length)return;
+    function rgb(h){var n=parseInt(h.slice(1),16);return (n>>16&255)+','+(n>>8&255)+','+(n&255);}
+    sws.forEach(function(b){
+      b.addEventListener('click',function(){
+        var c=b.getAttribute('data-c'), r=document.documentElement.style;
+        r.setProperty('--accent',c);
+        r.setProperty('--tint','rgba('+rgb(c)+',.08)');
+        sws.forEach(function(x){x.classList.toggle('on',x===b)});
+      });
+    });
   })();
   (function(){
     var ring=document.getElementById('tryring'); if(!ring)return;
