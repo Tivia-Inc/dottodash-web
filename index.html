@@ -123,23 +123,19 @@
   .shot.sm{width:208px;border-radius:28px}
   .figure{display:flex;flex-direction:column;align-items:center;gap:13px;margin-top:clamp(28px,5vw,48px)}
   .shotcap{color:var(--muted);font-size:13.5px;text-align:center}
-  /* v2: completion modes */
-  .modes{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,56px);align-items:center}
-  .modeshot{display:flex;justify-content:center}
-  .modelist{display:flex;flex-direction:column}
+  /* v2.1: completion modes — category columns (3-up desktop, stacked mobile) */
+  .modecols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,40px);margin-top:clamp(36px,6vw,56px)}
+  .modegroup{display:flex;flex-direction:column}
   .mode{display:flex;gap:14px;align-items:flex-start;padding:13px 6px;border-top:1px solid var(--line)}
-  .mode:first-child{border-top:none}
   .mi{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:18px;line-height:1}
   .mi .gdot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
   .mode h4{font-size:16px;font-weight:700;letter-spacing:-.01em}
   .mode p{color:var(--muted);font-size:14.5px;margin-top:3px;line-height:1.55}
-  .shots{display:grid;gap:clamp(16px,3vw,32px);margin-top:clamp(36px,6vw,64px);justify-items:center}
-  .shots.two{grid-template-columns:repeat(2,auto);justify-content:center}
-  /* v2.1: completion-mode categories + NEW pill */
-  .modecat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:16px 6px 6px}
-  .modelist .modecat:first-child{padding-top:0}
+  .modecat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:0 6px 8px}
   .modecat + .mode{border-top:none}
   .newpill{display:inline-flex;align-items:center;background:var(--tint);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:9999px;margin-left:8px;vertical-align:middle}
+  .shots{display:grid;gap:clamp(16px,3vw,32px);margin-top:clamp(36px,6vw,64px);justify-items:center}
+  .shots.two{grid-template-columns:repeat(2,auto);justify-content:center}
   /* v2: pro pill */
   .protag{display:inline-flex;align-items:center;gap:6px;background:var(--tint);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.04em;padding:5px 11px;border-radius:9999px;margin-bottom:14px}
   /* v2: free / pro */
@@ -192,7 +188,7 @@
   @media(prefers-reduced-motion:reduce){.aurora,.heroshot{animation:none}.tryring,.plan,.tp,.badge,.mailbtn{transition:none}}
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
-  @media(max-width:760px){.hero,.grid3,.modes,.plans{grid-template-columns:1fr}.shots.two{grid-template-columns:1fr}}
+  @media(max-width:760px){.hero,.grid3,.modecols,.plans{grid-template-columns:1fr}.shots.two{grid-template-columns:1fr}}
   @media(max-width:560px){.tcols{flex-direction:column}.tcol{margin-bottom:12px}#links{display:none}}
   /* phone nav: lang toggle never wraps; collapse the nav App Store badge to an icon-only
      pill so the longer EN/JA labels can't overflow (a full labeled CTA sits in the hero below) */
@@ -249,19 +245,20 @@
     <h2 data-en="One tap won't finish it." data-ko="한 번의 탭으로는 끝나지 않아요." data-ja="ワンタップでは終わりません。">One tap won't finish it.</h2>
     <p class="ssub" data-en="Give every task a small mission — it's done only when you actually <span class='nw'>pull it off.</span> Now in <span class='nw'>nine ways.</span>" data-ko="<span class='nw'>할 일마다 작은 미션을 붙이세요.</span> <span class='nw'>그대로 해내야만 완료돼요.</span> <span class='nw'>이제 아홉 가지 방식으로.</span>" data-ja="<span class='nw'>タスクごとに小さなミッションを。</span><span class='nw'>そのとおりにこなして、</span><span class='nw'>はじめて完了です。</span><span class='nw'>完了の方法は9つに。</span>">Give every task a small mission — it's done only when you actually <span class="nw">pull it off.</span> Now in <span class="nw">nine ways.</span></p>
   </div>
-  <div class="modes reveal">
-    <div class="modeshot">
-      <img class="shot sheet" loading="lazy" src="assets/v2-modes-en.png?v=2" alt="Choosing one of nine completion modes" data-en-src="assets/v2-modes-en.png?v=2" data-ko-src="assets/v2-modes-ko.png?v=2" data-ja-src="assets/v2-modes-ja.png?v=2">
-    </div>
-    <div class="modelist">
+  <div class="modecols reveal">
+    <div class="modegroup">
       <div class="modecat" data-en="Knock out" data-ko="해치우기" data-ja="やっつける">Knock out</div>
       <div class="mode"><span class="mi">🔢</span><div><h4 data-en="Count" data-ko="횟수" data-ja="回数">Count</h4><p data-en="One tap at a time — count it out" data-ko="하나씩 세면서, 정한 만큼 채워요" data-ja="数えながらタップして消そう">One tap at a time — count it out</p></div></div>
       <div class="mode"><span class="mi">✊</span><div><h4 data-en="Hold" data-ko="길게" data-ja="長押し">Hold</h4><p data-en="Press and hold — done in one go" data-ko="미루던 일도 꾹 누르면 한 방에" data-ja="ぐっと長押しで一気に片付け">Press and hold — done in one go</p></div></div>
       <div class="mode"><span class="mi">📳</span><div><h4 data-en="Shake <span class='newpill'>NEW</span>" data-ko="흔들기 <span class='newpill'>NEW</span>" data-ja="シェイク <span class='newpill'>NEW</span>">Shake <span class="newpill">NEW</span></h4><p data-en="Shake it off till it's gone" data-ko="흔들어야 후련하게 사라져요" data-ja="振ってスッキリ消し去ろう">Shake it off till it's gone</p></div></div>
+    </div>
+    <div class="modegroup">
       <div class="modecat" data-en="Lock in" data-ko="몰입하기" data-ja="没頭する">Lock in</div>
       <div class="mode"><span class="mi">⏱️</span><div><h4 data-en="Timer" data-ko="타이머" data-ja="タイマー">Timer</h4><p data-en="Brush for 2 min — just fill the time" data-ko="양치 3분, 시간을 채워야 끝!" data-ja="歯みがき2分、時間を満たすまで！">Brush for 2 min — just fill the time</p></div></div>
       <div class="mode"><span class="mi">🎯</span><div><h4 data-en="Stay" data-ko="집중" data-ja="集中">Stay</h4><p data-en="Look away and it's back to square one" data-ko="한눈팔면 처음부터 다시" data-ja="よそ見したら最初からやり直し">Look away and it's back to square one</p></div></div>
       <div class="mode"><span class="mi">🔄</span><div><h4 data-en="Flip <span class='newpill'>NEW</span>" data-ko="뒤집기 <span class='newpill'>NEW</span>" data-ja="裏返し <span class='newpill'>NEW</span>">Flip <span class="newpill">NEW</span></h4><p data-en="Flip it face-down for a detox" data-ko="디지털 디톡스가 필요할 때" data-ja="デジタルデトックスしたいときに">Flip it face-down for a detox</p></div></div>
+    </div>
+    <div class="modegroup">
       <div class="modecat" data-en="Leave a mark" data-ko="남기기" data-ja="残す">Leave a mark</div>
       <div class="mode"><span class="mi">📷</span><div><h4 data-en="Photo" data-ko="사진" data-ja="写真">Photo</h4><p data-en="Pics or it didn't happen" data-ko="촬영하고, 인증해야 진짜 끝나요" data-ja="撮って記録、それで本当に完了">Pics or it didn't happen</p></div></div>
       <div class="mode"><span class="mi">✍️</span><div><h4 data-en="Sign <span class='newpill'>NEW</span>" data-ko="서명 <span class='newpill'>NEW</span>" data-ja="サイン <span class='newpill'>NEW</span>">Sign <span class="newpill">NEW</span></h4><p data-en="Sign it, seal the deal" data-ko="사인 한 번으로 굳히는 다짐" data-ja="サイン一つで決意を固める">Sign it, seal the deal</p></div></div>
