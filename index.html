@@ -142,6 +142,37 @@
   .modecat{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding:0 6px 8px}
   .modecat + .mode{border-top:none}
   .newpill{display:inline-flex;align-items:center;background:var(--tint);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:9999px;margin-left:8px;vertical-align:middle}
+  /* gimmick demos — stage tiles (POC: count + flip) */
+  .mode.has-demo{flex-direction:column;align-items:stretch;gap:12px}
+  .modeanim{position:relative;width:100%;aspect-ratio:5/4;background:var(--tint);border-radius:14px;overflow:hidden;display:grid;place-items:center}
+  .modeanim .mi{position:absolute;top:8px;left:8px;width:28px;height:28px;font-size:15px;background:var(--tile);box-shadow:0 4px 10px -5px rgba(0,0,0,.22);z-index:4;margin-top:0}
+  .modeanim *{animation-play-state:paused}
+  .reveal.in .modeanim *{animation-play-state:running}
+  .demo-count .cnum{position:relative;width:1ch;height:1.15em;font-size:clamp(34px,8vw,50px);font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+  .demo-count .cnum b{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.5);animation:cpop 3.2s infinite}
+  .demo-count .cnum b:nth-child(2){animation-delay:.5s} .demo-count .cnum b:nth-child(3){animation-delay:1s} .demo-count .cnum b:nth-child(4){animation-delay:1.5s} .demo-count .cnum b:nth-child(5){animation-delay:2s}
+  @keyframes cpop{0%{opacity:0;transform:scale(.5)}4%{opacity:1;transform:scale(1.18)}9%{transform:scale(1)}14%{opacity:1}16%{opacity:0;transform:scale(.7)}100%{opacity:0}}
+  .demo-count .cdots{position:absolute;bottom:14px;display:flex;gap:7px}
+  .demo-count .cdots i{width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.18;animation:cdot 3.2s infinite}
+  .demo-count .cdots i:nth-child(2){animation-delay:.5s} .demo-count .cdots i:nth-child(3){animation-delay:1s} .demo-count .cdots i:nth-child(4){animation-delay:1.5s} .demo-count .cdots i:nth-child(5){animation-delay:2s}
+  @keyframes cdot{0%,3%{opacity:.18;transform:scale(1)}7%{opacity:1;transform:scale(1.35)}11%,78%{opacity:1;transform:scale(1)}88%,100%{opacity:.18}}
+  .demo-count .cburst{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+  .demo-count .cburst span{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;animation:cbst 3.2s infinite}
+  @keyframes cbst{0%,76%{opacity:0;transform:rotate(var(--a)) translateY(-4px) scale(.3)}80%{opacity:1}93%{opacity:0;transform:rotate(var(--a)) translateY(-30px) scale(1)}100%{opacity:0}}
+  .demo-flip .fstage{position:relative;display:grid;place-items:center;perspective:600px}
+  .demo-flip .fphone{position:relative;width:40px;height:72px;transform-style:preserve-3d;animation:flipp 4s infinite}
+  .demo-flip .ff{position:absolute;inset:0;border-radius:11px;border:2px solid var(--accent);backface-visibility:hidden;background:var(--tile);box-shadow:0 12px 22px -10px rgba(0,0,0,.28)}
+  .demo-flip .ff.front::before{content:"";position:absolute;inset:5px;border-radius:6px;background:var(--tint)}
+  .demo-flip .ff.front::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:10px;height:2px;border-radius:2px;background:var(--accent);opacity:.5}
+  .demo-flip .ff.back{transform:rotateY(180deg);background:var(--accent);border-color:var(--accent)}
+  .demo-flip .ff.back::after{content:"";position:absolute;top:9px;left:9px;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55)}
+  @keyframes flipp{0%,8%{transform:rotateY(0)}26%{transform:rotateY(180deg)}80%{transform:rotateY(180deg)}92%,100%{transform:rotateY(0)}}
+  .demo-flip .ftime{position:absolute;width:96px;height:96px;opacity:0;animation:ftf 4s infinite}
+  @keyframes ftf{0%,22%{opacity:0}30%{opacity:.6}77%{opacity:.6}84%,100%{opacity:0}}
+  .demo-flip .ftrk{fill:none;stroke:var(--accent);stroke-width:3;opacity:.16}
+  .demo-flip .farc{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-dasharray:264;stroke-dashoffset:264;transform:rotate(-90deg);transform-origin:center;animation:farc 4s infinite}
+  @keyframes farc{0%,26%{stroke-dashoffset:264}80%{stroke-dashoffset:10}100%{stroke-dashoffset:10}}
+  @media(prefers-reduced-motion:reduce){.modeanim *{animation:none!important}.demo-count .cnum b:nth-child(5){opacity:1;transform:none}.demo-count .cdots i{opacity:1}.demo-flip .fphone{transform:rotateY(180deg)}.demo-flip .ftime{opacity:.6}.demo-flip .farc{stroke-dashoffset:10}}
   .shots{display:grid;gap:clamp(16px,3vw,32px);margin-top:clamp(36px,6vw,64px);justify-items:center}
   .shots.two{grid-template-columns:repeat(2,auto);justify-content:center}
   /* v2: pro pill */
@@ -344,7 +375,7 @@
   <div class="modecols reveal">
     <div class="modegroup">
       <div class="modecat" data-en="Knock out" data-ko="해치우기" data-ja="やっつける">Knock out</div>
-      <div class="mode"><span class="mi">🔢</span><div><h4 data-en="Count" data-ko="횟수" data-ja="回数">Count</h4><p data-en="One tap at a time — count it out" data-ko="하나씩 세면서, 정한 만큼 채워요" data-ja="数えながらタップして消そう">One tap at a time — count it out</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-count"><span class="mi">🔢</span><div class="cnum"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div><div class="cdots"><i></i><i></i><i></i><i></i><i></i></div><div class="cburst"><span style="--a:0deg"></span><span style="--a:60deg"></span><span style="--a:120deg"></span><span style="--a:180deg"></span><span style="--a:240deg"></span><span style="--a:300deg"></span></div></div><div><h4 data-en="Count" data-ko="횟수" data-ja="回数">Count</h4><p data-en="One tap at a time — count it out" data-ko="하나씩 세면서, 정한 만큼 채워요" data-ja="数えながらタップして消そう">One tap at a time — count it out</p></div></div>
       <div class="mode"><span class="mi">✊</span><div><h4 data-en="Hold" data-ko="길게" data-ja="長押し">Hold</h4><p data-en="Press and hold — done in one go" data-ko="미루던 일도 꾹 누르면 한 방에" data-ja="ぐっと長押しで一気に片付け">Press and hold — done in one go</p></div></div>
       <div class="mode"><span class="mi">📳</span><div><h4 data-en="Shake <span class='newpill'>NEW</span>" data-ko="흔들기 <span class='newpill'>NEW</span>" data-ja="シェイク <span class='newpill'>NEW</span>">Shake <span class="newpill">NEW</span></h4><p data-en="Shake it off till it's gone" data-ko="흔들어야 후련하게 사라져요" data-ja="振ってスッキリ消し去ろう">Shake it off till it's gone</p></div></div>
     </div>
@@ -352,7 +383,7 @@
       <div class="modecat" data-en="Lock in" data-ko="몰입하기" data-ja="没頭する">Lock in</div>
       <div class="mode"><span class="mi">⏱️</span><div><h4 data-en="Timer" data-ko="타이머" data-ja="タイマー">Timer</h4><p data-en="Brush for 2 min — just fill the time" data-ko="양치 3분, 시간을 채워야 끝!" data-ja="歯みがき2分、時間を満たすまで！">Brush for 2 min — just fill the time</p></div></div>
       <div class="mode"><span class="mi">🎯</span><div><h4 data-en="Stay" data-ko="집중" data-ja="集中">Stay</h4><p data-en="Look away and it's back to square one" data-ko="한눈팔면 처음부터 다시" data-ja="よそ見したら最初からやり直し">Look away and it's back to square one</p></div></div>
-      <div class="mode"><span class="mi">🔄</span><div><h4 data-en="Flip <span class='newpill'>NEW</span>" data-ko="뒤집기 <span class='newpill'>NEW</span>" data-ja="裏返し <span class='newpill'>NEW</span>">Flip <span class="newpill">NEW</span></h4><p data-en="Flip it face-down for a detox" data-ko="디지털 디톡스가 필요할 때" data-ja="デジタルデトックスしたいときに">Flip it face-down for a detox</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-flip"><span class="mi">🔄</span><div class="fstage"><svg class="ftime" viewBox="0 0 96 96"><circle class="ftrk" cx="48" cy="48" r="42"/><circle class="farc" cx="48" cy="48" r="42"/></svg><div class="fphone"><div class="ff front"></div><div class="ff back"></div></div></div></div><div><h4 data-en="Flip <span class='newpill'>NEW</span>" data-ko="뒤집기 <span class='newpill'>NEW</span>" data-ja="裏返し <span class='newpill'>NEW</span>">Flip <span class="newpill">NEW</span></h4><p data-en="Flip it face-down for a detox" data-ko="디지털 디톡스가 필요할 때" data-ja="デジタルデトックスしたいときに">Flip it face-down for a detox</p></div></div>
     </div>
     <div class="modegroup">
       <div class="modecat" data-en="Leave a mark" data-ko="남기기" data-ja="残す">Leave a mark</div>
