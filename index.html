@@ -172,7 +172,43 @@
   .demo-flip .ftrk{fill:none;stroke:var(--accent);stroke-width:3;opacity:.16}
   .demo-flip .farc{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-dasharray:264;stroke-dashoffset:264;transform:rotate(-90deg);transform-origin:center;animation:farc 4s infinite}
   @keyframes farc{0%,26%{stroke-dashoffset:264}80%{stroke-dashoffset:10}100%{stroke-dashoffset:10}}
-  @media(prefers-reduced-motion:reduce){.modeanim *{animation:none!important}.demo-count .cnum b:nth-child(5){opacity:1;transform:none}.demo-count .cdots i{opacity:1}.demo-flip .fphone{transform:rotateY(180deg)}.demo-flip .ftime{opacity:.6}.demo-flip .farc{stroke-dashoffset:10}}
+  .modeanim .chk{position:absolute;top:50%;left:50%;color:var(--accent);font-weight:800;font-size:26px;opacity:0;transform:translate(-50%,-50%) scale(.4);animation:chkpop 3.6s infinite}
+  @keyframes chkpop{0%,60%{opacity:0;transform:translate(-50%,-50%) scale(.4)}68%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}74%{transform:translate(-50%,-50%) scale(1)}84%{opacity:1}92%,100%{opacity:0}}
+  .demo-hold .hring,.demo-timer .tring,.demo-stay .sring{width:88px;height:88px}
+  .demo-hold .htrk,.demo-timer .ttrk,.demo-stay .strk{fill:none;stroke:var(--accent);stroke-width:5;opacity:.15}
+  .demo-hold .harc,.demo-timer .tarc,.demo-stay .sarc{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:251;transform:rotate(-90deg);transform-origin:center}
+  .demo-hold .harc{stroke-dashoffset:251;animation:hfill 3.6s infinite}
+  @keyframes hfill{0%,6%{stroke-dashoffset:251}56%{stroke-dashoffset:0}82%{stroke-dashoffset:0}90%,100%{stroke-dashoffset:251}}
+  .demo-hold .hdot{position:absolute;top:50%;left:50%;width:15px;height:15px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);animation:hdot 3.6s infinite}
+  @keyframes hdot{0%,6%{transform:translate(-50%,-50%) scale(.7);opacity:.5}40%{transform:translate(-50%,-50%) scale(1.1);opacity:1}56%{transform:translate(-50%,-50%) scale(1)}62%{opacity:0}100%{opacity:0}}
+  .demo-timer .tarc{stroke-dashoffset:4;animation:tdep 3.6s infinite}
+  @keyframes tdep{0%,6%{stroke-dashoffset:4}58%{stroke-dashoffset:251}84%{stroke-dashoffset:251}92%,100%{stroke-dashoffset:4}}
+  .demo-stay .sarc{stroke-dashoffset:251;animation:sfill 3.6s infinite}
+  @keyframes sfill{0%,5%{stroke-dashoffset:251}26%{stroke-dashoffset:120}30%{stroke-dashoffset:251}34%{stroke-dashoffset:251}58%{stroke-dashoffset:0}84%{stroke-dashoffset:0}92%,100%{stroke-dashoffset:251}}
+  .demo-stay .seye{position:absolute;top:50%;left:50%;width:14px;height:14px;border-radius:50%;border:3px solid var(--accent);transform:translate(-50%,-50%);animation:seye 3.6s infinite}
+  @keyframes seye{0%,24%{transform:translate(-50%,-50%);opacity:1}26%{transform:translate(-78%,-50%)}28%{transform:translate(-26%,-50%)}30%{transform:translate(-50%,-50%)}58%{opacity:1}64%{opacity:0}100%{opacity:0}}
+  .demo-shake .shk{width:62px;height:42px;border-radius:11px;background:var(--tile);border:2px solid var(--accent);box-shadow:0 10px 20px -10px rgba(0,0,0,.25);display:grid;place-items:center;animation:shk 3.6s infinite}
+  .demo-shake .shk span{width:28px;height:5px;border-radius:3px;background:var(--accent);opacity:.5}
+  @keyframes shk{0%,10%{transform:translateX(0) rotate(0);opacity:1}14%{transform:translateX(-5px) rotate(-6deg)}20%{transform:translateX(5px) rotate(6deg)}26%{transform:translateX(-5px) rotate(-5deg)}32%{transform:translateX(5px) rotate(5deg)}38%{transform:translateX(-3px) rotate(-3deg)}44%{transform:translateX(0) rotate(0);opacity:1}62%{transform:scale(.45) rotate(10deg);opacity:0}84%{transform:scale(.45);opacity:0}91%{transform:scale(1);opacity:1}100%{transform:scale(1)}}
+  .demo-photo .cam{width:62px;height:46px;border-radius:11px;background:var(--tile);border:2px solid var(--accent);display:grid;place-items:center;box-shadow:0 10px 20px -10px rgba(0,0,0,.22);animation:camp 3.6s infinite}
+  .demo-photo .cam .lens{width:20px;height:20px;border-radius:50%;border:3px solid var(--accent)}
+  @keyframes camp{0%,24%{transform:scale(1);opacity:1}30%{transform:scale(.92);opacity:1}38%{transform:scale(1);opacity:1}46%{opacity:0}86%{opacity:0}93%{opacity:1}100%{opacity:1}}
+  .demo-photo .flash{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 3.6s infinite}
+  @keyframes flash{0%,29%{opacity:0}33%{opacity:.85}42%{opacity:0}100%{opacity:0}}
+  .demo-photo .thumb{position:absolute;top:50%;left:50%;width:40px;height:40px;border-radius:9px;background:var(--tint);border:2px solid var(--accent);overflow:hidden;opacity:0;transform:translate(-50%,30%) scale(.6);animation:thumb 3.6s infinite}
+  .demo-photo .thumb span{position:absolute;right:7px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);opacity:.7}
+  @keyframes thumb{0%,38%{opacity:0;transform:translate(-50%,30%) scale(.6)}48%{opacity:1;transform:translate(-50%,-50%) scale(1)}86%{opacity:1;transform:translate(-50%,-50%) scale(1)}93%,100%{opacity:0;transform:translate(-50%,-50%) scale(1)}}
+  .demo-sign .sig{width:118px;height:62px}
+  .demo-sign .sigbase{stroke:var(--accent);stroke-width:2;opacity:.18}
+  .demo-sign .sigline{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:sdraw 3.6s infinite}
+  @keyframes sdraw{0%,6%{stroke-dashoffset:100}54%{stroke-dashoffset:0}84%{stroke-dashoffset:0}92%,100%{stroke-dashoffset:100}}
+  .demo-type .typ{display:flex;align-items:flex-end;gap:5px;height:26px}
+  .demo-type .typ i{width:11px;border-radius:3px;background:var(--accent);opacity:0;transform:translateY(4px);animation:typc 3.6s infinite}
+  .demo-type .typ i:nth-child(1){height:14px}.demo-type .typ i:nth-child(2){height:20px;animation-delay:.3s}.demo-type .typ i:nth-child(3){height:12px;animation-delay:.6s}.demo-type .typ i:nth-child(4){height:18px;animation-delay:.9s}.demo-type .typ i:nth-child(5){height:14px;animation-delay:1.2s}
+  @keyframes typc{0%{opacity:0;transform:translateY(5px) scaleY(.5)}4%{opacity:1;transform:translateY(0) scaleY(1)}66%{opacity:1}80%,100%{opacity:0}}
+  .demo-type .caret{width:3px;height:22px;background:var(--accent);margin-left:1px;animation:caret 3.6s infinite}
+  @keyframes caret{0%,58%{opacity:1}66%,100%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.modeanim *{animation:none!important}.demo-count .cnum b:nth-child(5){opacity:1;transform:none}.demo-count .cdots i{opacity:1}.demo-flip .fphone{transform:rotateY(180deg)}.demo-flip .ftime{opacity:.6}.demo-flip .farc{stroke-dashoffset:10}.demo-hold .harc,.demo-stay .sarc,.demo-sign .sigline{stroke-dashoffset:0}.demo-hold .hdot{opacity:0}.demo-timer .tarc{stroke-dashoffset:4}.demo-type .typ i{opacity:1;transform:none}.demo-photo .thumb{opacity:1;transform:translate(-50%,-50%) scale(1)}.modeanim .chk{opacity:1;transform:translate(-50%,-50%) scale(1)}}
   .shots{display:grid;gap:clamp(16px,3vw,32px);margin-top:clamp(36px,6vw,64px);justify-items:center}
   .shots.two{grid-template-columns:repeat(2,auto);justify-content:center}
   /* v2: pro pill */
@@ -376,20 +412,20 @@
     <div class="modegroup">
       <div class="modecat" data-en="Knock out" data-ko="해치우기" data-ja="やっつける">Knock out</div>
       <div class="mode has-demo"><div class="modeanim demo-count"><span class="mi">🔢</span><div class="cnum"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div><div class="cdots"><i></i><i></i><i></i><i></i><i></i></div><div class="cburst"><span style="--a:0deg"></span><span style="--a:60deg"></span><span style="--a:120deg"></span><span style="--a:180deg"></span><span style="--a:240deg"></span><span style="--a:300deg"></span></div></div><div><h4 data-en="Count" data-ko="횟수" data-ja="回数">Count</h4><p data-en="One tap at a time — count it out" data-ko="하나씩 세면서, 정한 만큼 채워요" data-ja="数えながらタップして消そう">One tap at a time — count it out</p></div></div>
-      <div class="mode"><span class="mi">✊</span><div><h4 data-en="Hold" data-ko="길게" data-ja="長押し">Hold</h4><p data-en="Press and hold — done in one go" data-ko="미루던 일도 꾹 누르면 한 방에" data-ja="ぐっと長押しで一気に片付け">Press and hold — done in one go</p></div></div>
-      <div class="mode"><span class="mi">📳</span><div><h4 data-en="Shake <span class='newpill'>NEW</span>" data-ko="흔들기 <span class='newpill'>NEW</span>" data-ja="シェイク <span class='newpill'>NEW</span>">Shake <span class="newpill">NEW</span></h4><p data-en="Shake it off till it's gone" data-ko="흔들어야 후련하게 사라져요" data-ja="振ってスッキリ消し去ろう">Shake it off till it's gone</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-hold"><span class="mi">✊</span><svg class="hring" viewBox="0 0 96 96"><circle class="htrk" cx="48" cy="48" r="40"/><circle class="harc" cx="48" cy="48" r="40"/></svg><span class="hdot"></span><span class="chk">✓</span></div><div><h4 data-en="Hold" data-ko="길게" data-ja="長押し">Hold</h4><p data-en="Press and hold — done in one go" data-ko="미루던 일도 꾹 누르면 한 방에" data-ja="ぐっと長押しで一気に片付け">Press and hold — done in one go</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-shake"><span class="mi">📳</span><div class="shk"><span></span></div></div><div><h4 data-en="Shake <span class='newpill'>NEW</span>" data-ko="흔들기 <span class='newpill'>NEW</span>" data-ja="シェイク <span class='newpill'>NEW</span>">Shake <span class="newpill">NEW</span></h4><p data-en="Shake it off till it's gone" data-ko="흔들어야 후련하게 사라져요" data-ja="振ってスッキリ消し去ろう">Shake it off till it's gone</p></div></div>
     </div>
     <div class="modegroup">
       <div class="modecat" data-en="Lock in" data-ko="몰입하기" data-ja="没頭する">Lock in</div>
-      <div class="mode"><span class="mi">⏱️</span><div><h4 data-en="Timer" data-ko="타이머" data-ja="タイマー">Timer</h4><p data-en="Brush for 2 min — just fill the time" data-ko="양치 3분, 시간을 채워야 끝!" data-ja="歯みがき2分、時間を満たすまで！">Brush for 2 min — just fill the time</p></div></div>
-      <div class="mode"><span class="mi">🎯</span><div><h4 data-en="Stay" data-ko="집중" data-ja="集中">Stay</h4><p data-en="Look away and it's back to square one" data-ko="한눈팔면 처음부터 다시" data-ja="よそ見したら最初からやり直し">Look away and it's back to square one</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-timer"><span class="mi">⏱️</span><svg class="tring" viewBox="0 0 96 96"><circle class="ttrk" cx="48" cy="48" r="40"/><circle class="tarc" cx="48" cy="48" r="40"/></svg><span class="chk">✓</span></div><div><h4 data-en="Timer" data-ko="타이머" data-ja="タイマー">Timer</h4><p data-en="Brush for 2 min — just fill the time" data-ko="양치 3분, 시간을 채워야 끝!" data-ja="歯みがき2分、時間を満たすまで！">Brush for 2 min — just fill the time</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-stay"><span class="mi">🎯</span><svg class="sring" viewBox="0 0 96 96"><circle class="strk" cx="48" cy="48" r="40"/><circle class="sarc" cx="48" cy="48" r="40"/></svg><span class="seye"></span><span class="chk">✓</span></div><div><h4 data-en="Stay" data-ko="집중" data-ja="集中">Stay</h4><p data-en="Look away and it's back to square one" data-ko="한눈팔면 처음부터 다시" data-ja="よそ見したら最初からやり直し">Look away and it's back to square one</p></div></div>
       <div class="mode has-demo"><div class="modeanim demo-flip"><span class="mi">🔄</span><div class="fstage"><svg class="ftime" viewBox="0 0 96 96"><circle class="ftrk" cx="48" cy="48" r="42"/><circle class="farc" cx="48" cy="48" r="42"/></svg><div class="fphone"><div class="ff front"></div><div class="ff back"></div></div></div></div><div><h4 data-en="Flip <span class='newpill'>NEW</span>" data-ko="뒤집기 <span class='newpill'>NEW</span>" data-ja="裏返し <span class='newpill'>NEW</span>">Flip <span class="newpill">NEW</span></h4><p data-en="Flip it face-down for a detox" data-ko="디지털 디톡스가 필요할 때" data-ja="デジタルデトックスしたいときに">Flip it face-down for a detox</p></div></div>
     </div>
     <div class="modegroup">
       <div class="modecat" data-en="Leave a mark" data-ko="남기기" data-ja="残す">Leave a mark</div>
-      <div class="mode"><span class="mi">📷</span><div><h4 data-en="Photo" data-ko="사진" data-ja="写真">Photo</h4><p data-en="Pics or it didn't happen" data-ko="촬영하고, 인증해야 진짜 끝나요" data-ja="撮って記録、それで本当に完了">Pics or it didn't happen</p></div></div>
-      <div class="mode"><span class="mi">✍️</span><div><h4 data-en="Sign <span class='newpill'>NEW</span>" data-ko="서명 <span class='newpill'>NEW</span>" data-ja="サイン <span class='newpill'>NEW</span>">Sign <span class="newpill">NEW</span></h4><p data-en="Sign it, seal the deal" data-ko="사인 한 번으로 굳히는 다짐" data-ja="サイン一つで決意を固める">Sign it, seal the deal</p></div></div>
-      <div class="mode"><span class="mi">⌨️</span><div><h4 data-en="Type <span class='newpill'>NEW</span>" data-ko="타이핑 <span class='newpill'>NEW</span>" data-ja="タイピング <span class='newpill'>NEW</span>">Type <span class="newpill">NEW</span></h4><p data-en="Type it out, word for word" data-ko="또박또박 적어서 완료해요" data-ja="一字ずつ打ち込んで完了">Type it out, word for word</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-photo"><span class="mi">📷</span><div class="cam"><span class="lens"></span></div><div class="flash"></div><div class="thumb"><span></span></div></div><div><h4 data-en="Photo" data-ko="사진" data-ja="写真">Photo</h4><p data-en="Pics or it didn't happen" data-ko="촬영하고, 인증해야 진짜 끝나요" data-ja="撮って記録、それで本当に完了">Pics or it didn't happen</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-sign"><span class="mi">✍️</span><svg class="sig" viewBox="0 0 120 64"><line class="sigbase" x1="14" y1="50" x2="106" y2="50"/><path class="sigline" pathLength="100" d="M16,44 C26,14 34,52 46,30 C54,16 60,46 70,34 C78,24 86,42 104,18"/></svg><span class="chk">✓</span></div><div><h4 data-en="Sign <span class='newpill'>NEW</span>" data-ko="서명 <span class='newpill'>NEW</span>" data-ja="サイン <span class='newpill'>NEW</span>">Sign <span class="newpill">NEW</span></h4><p data-en="Sign it, seal the deal" data-ko="사인 한 번으로 굳히는 다짐" data-ja="サイン一つで決意を固める">Sign it, seal the deal</p></div></div>
+      <div class="mode has-demo"><div class="modeanim demo-type"><span class="mi">⌨️</span><div class="typ"><i></i><i></i><i></i><i></i><i></i><b class="caret"></b></div><span class="chk">✓</span></div><div><h4 data-en="Type <span class='newpill'>NEW</span>" data-ko="타이핑 <span class='newpill'>NEW</span>" data-ja="タイピング <span class='newpill'>NEW</span>">Type <span class="newpill">NEW</span></h4><p data-en="Type it out, word for word" data-ko="또박또박 적어서 완료해요" data-ja="一字ずつ打ち込んで完了">Type it out, word for word</p></div></div>
     </div>
   </div>
 </section>
