@@ -145,7 +145,7 @@
   /* gimmick demos — stage tiles (POC: count + flip) */
   .mode.has-demo{flex-direction:column;align-items:stretch;gap:12px}
   .modeanim{position:relative;width:100%;aspect-ratio:5/4;background:var(--tint);border-radius:14px;overflow:hidden;display:grid;place-items:center}
-  .modeanim .mi{position:absolute;top:8px;left:8px;width:28px;height:28px;font-size:15px;background:var(--tile);box-shadow:0 4px 10px -5px rgba(0,0,0,.22);z-index:4;margin-top:0}
+  .modeanim .mi{position:absolute;top:8px;left:8px;width:28px;height:28px;font-size:15px;background:var(--tile);box-shadow:0 4px 10px -5px rgba(0,0,0,.22);z-index:4;margin-top:0;box-sizing:border-box;padding-left:3px}
   .modeanim *{animation-play-state:paused}
   .reveal.in .modeanim *{animation-play-state:running}
   .demo-count .cnum{position:relative;width:1ch;height:1.15em;font-size:clamp(34px,8vw,50px);font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
