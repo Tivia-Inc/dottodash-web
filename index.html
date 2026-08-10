@@ -159,6 +159,51 @@
   .demo-count .cburst{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
   .demo-count .cburst span{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;animation:cbst 3.2s infinite}
   @keyframes cbst{0%,76%{opacity:0;transform:rotate(var(--a)) translateY(-4px) scale(.3)}80%{opacity:1}93%{opacity:0;transform:rotate(var(--a)) translateY(-30px) scale(1)}100%{opacity:0}}
+
+  /* ── AI 데모 3종 (운세 · 일기 · 주간 리포트) ── */
+  .demo-ai{--ln:#8fa0b8}
+  .demo-ai .card{position:absolute;left:8%;right:8%;top:19%;bottom:11%;border-radius:12px;background:var(--tile);box-shadow:0 10px 24px -14px rgba(0,0,0,.35);overflow:hidden}
+  .demo-ai .hd{position:absolute;top:9px;left:11px;font-size:9px;font-weight:800;letter-spacing:.02em;color:var(--accent);opacity:.9}
+  .demo-ai .ln{position:absolute;left:11px;height:5px;border-radius:3px;background:var(--ln);opacity:.5;width:0}
+  .demo-ai .ln.w1{top:26px}.demo-ai .ln.w2{top:37px}.demo-ai .ln.w3{top:48px}.demo-ai .ln.w4{top:59px}
+  .demo-fortune .ln{animation:aiw 5.2s infinite}
+  .demo-fortune .ln.w1{--w:62%;animation-delay:.15s}
+  .demo-fortune .ln.w2{--w:74%;animation-delay:.5s}
+  .demo-fortune .ln.w3{--w:56%;animation-delay:.85s}
+  @keyframes aiw{0%{width:0}12%{width:var(--w)}86%{width:var(--w)}94%,100%{width:var(--w)}}
+  .demo-fortune .caret{position:absolute;width:2px;height:7px;background:var(--accent);border-radius:1px;opacity:0;animation:aicar 5.2s infinite}
+  @keyframes aicar{0%,4%{opacity:0}6%{opacity:1;left:11px;top:26px}22%{opacity:1;left:calc(11px + 60%);top:26px}24%{left:11px;top:37px}44%{left:calc(11px + 72%);top:37px}46%{left:11px;top:48px}64%{opacity:1;left:calc(11px + 54%);top:48px}70%,100%{opacity:0}}
+  .demo-fortune .pick{position:absolute;left:11px;right:11px;bottom:11px;height:20px;border-radius:7px;background:var(--tint);display:flex;align-items:center;padding:0 7px;gap:5px;opacity:0;transform:translateY(6px);animation:aipick 5.2s infinite}
+  @keyframes aipick{0%,66%{opacity:0;transform:translateY(6px)}74%{opacity:1;transform:translateY(0)}96%{opacity:1}100%{opacity:0}}
+  .demo-fortune .pick i{width:9px;height:9px;border-radius:50%;background:var(--accent);opacity:.35;flex:none}
+  .demo-fortune .pick u{flex:1;height:4px;border-radius:2px;background:var(--ln);opacity:.45;text-decoration:none}
+  .demo-fortune .pick b{font-size:8px;font-weight:800;color:var(--accent);white-space:nowrap}
+  .demo-fortune .tap{position:absolute;right:14px;bottom:14px;width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);opacity:0;animation:aitap 5.2s infinite}
+  @keyframes aitap{0%,80%{opacity:0;transform:scale(.4)}86%{opacity:.9;transform:scale(1)}96%,100%{opacity:0;transform:scale(2.1)}}
+
+  .demo-diary .ln{animation:aiw 5.6s infinite}
+  .demo-diary .ln.w1{--w:70%;animation-delay:.2s}
+  .demo-diary .ln.w2{--w:84%;animation-delay:.75s}
+  .demo-diary .ln.w3{--w:66%;animation-delay:1.3s}
+  .demo-diary .ln.w4{--w:78%;animation-delay:1.85s}
+  .demo-diary .caret{position:absolute;width:2px;height:7px;background:var(--accent);border-radius:1px;opacity:0;animation:dcar 5.6s infinite}
+  @keyframes dcar{0%,3%{opacity:0}5%{opacity:1;left:11px;top:26px}17%{left:calc(11px + 68%);top:26px}19%{left:11px;top:37px}36%{left:calc(11px + 82%);top:37px}38%{left:11px;top:48px}53%{left:calc(11px + 64%);top:48px}55%{left:11px;top:59px}72%{opacity:1;left:calc(11px + 76%);top:59px}80%,100%{opacity:0}}
+  .demo-diary .gauge{position:absolute;left:11px;right:11px;bottom:13px;height:5px;border-radius:3px;background:var(--tint);overflow:hidden}
+  .demo-diary .gauge i{display:block;height:100%;width:0;border-radius:3px;background:var(--accent);animation:dg 5.6s infinite}
+  @keyframes dg{0%,6%{width:0}30%{width:50%}90%{width:50%}100%{width:50%}}
+
+  .demo-week .ttl{position:absolute;top:24px;left:11px;right:11px;height:8px;border-radius:4px;background:var(--accent);opacity:0;transform:scaleX(.2);transform-origin:left;animation:wt 5.4s infinite}
+  @keyframes wt{0%,8%{opacity:0;transform:scaleX(.2)}18%{opacity:.85;transform:scaleX(1)}88%{opacity:.85}100%{opacity:0}}
+  .demo-week .bars{position:absolute;left:11px;right:11px;bottom:11px;display:flex;align-items:flex-end;gap:5px;height:52%}
+  .demo-week .bars s{flex:1;border-radius:3px 3px 0 0;background:var(--ln);opacity:.32;height:0;text-decoration:none;animation:wb 5.4s infinite}
+  .demo-week .bars s.on{background:var(--accent);opacity:.9}
+  .demo-week .bars s:nth-child(1){--h:38%;animation-delay:.2s}
+  .demo-week .bars s:nth-child(2){--h:72%;animation-delay:.35s}
+  .demo-week .bars s:nth-child(3){--h:26%;animation-delay:.5s}
+  .demo-week .bars s:nth-child(4){--h:88%;animation-delay:.65s}
+  .demo-week .bars s:nth-child(5){--h:54%;animation-delay:.8s}
+  .demo-week .bars s:nth-child(6){--h:34%;animation-delay:.95s}
+  @keyframes wb{0%{height:0}22%{height:var(--h)}90%{height:var(--h)}100%{height:var(--h)}}
   .demo-flip .fstage{position:relative;display:grid;place-items:center;perspective:600px}
   .demo-flip .fphone{position:relative;width:40px;height:72px;transform-style:preserve-3d;animation:flipp 4s infinite}
   .demo-flip .ff{position:absolute;inset:0;border-radius:11px;border:2px solid var(--accent);backface-visibility:hidden;background:var(--tile);box-shadow:0 12px 22px -10px rgba(0,0,0,.28)}
@@ -348,7 +393,7 @@
   <div>
     <div class="laurel">
       <span class="lwr" aria-hidden="true"></span>
-      <div class="ltxt"><span class="lstar">★</span><span class="lrank" data-en="#6" data-ko="6위" data-ja="6位">#6</span><span class="lsub" data-en="in Productivity" data-ko="생산성 차트" data-ja="仕事効率化">in Productivity</span><span class="lstore">App Store</span></div>
+      <div class="ltxt"><span class="lstar">★</span><span class="lrank" data-en="Top 10" data-ko="Top 10" data-ja="Top 10">Top 10</span><span class="lsub" data-en="in Productivity" data-ko="생산성 차트" data-ja="仕事効率化">in Productivity</span><span class="lstore">App Store</span></div>
       <span class="lwr r" aria-hidden="true"></span>
     </div>
     <div class="eyebrow" data-en="For people who never follow through" data-ko="결심만 하고 안 하는 사람을 위한 실행 도구" data-ja="決めても動けない人のための実行ツール">For people who never follow through</div>
@@ -357,7 +402,7 @@
     <div class="actions"><a class="badge" href="https://apps.apple.com/app/dottodash/id6772737246?platform=iphone" target="_blank" rel="noopener"><svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="bt"><span class="t1" data-en="Download on the" data-ko="App Store에서" data-ja="App Storeで">Download on the</span><span class="t2" data-en="App Store" data-ko="다운로드" data-ja="ダウンロード">App Store</span></span></a><span class="meta" data-en="iPhone · iPad · iCloud sync" data-ko="iPhone · iPad · iCloud 동기화" data-ja="iPhone · iPad · iCloud同期">iPhone · iPad · iCloud sync</span></div>
   </div>
   <div>
-    <img class="heroshot" src="assets/v2-home-en.png?v=1" alt="dottodash — Today, with completion rings" data-en-src="assets/v2-home-en.png?v=1" data-ko-src="assets/v2-home-ko.png?v=1" data-ja-src="assets/v2-home-ja.png?v=1">
+    <img class="heroshot" src="assets/v25-home-en.png?v=25" alt="dottodash — today's fortune, the list, and last week's report" data-en-src="assets/v25-home-en.png?v=25" data-ko-src="assets/v25-home-ko.png?v=25" data-ja-src="assets/v25-home-ja.png?v=25">
   </div>
 </div></header>
 
@@ -438,6 +483,44 @@
       <div class="mode has-demo"><div class="modeanim demo-photo"><span class="mi">📷</span><div class="cam"><span class="lens"></span></div><div class="flash"></div><div class="thumb"><span></span></div></div><div><h4 data-en="Photo" data-ko="사진" data-ja="写真">Photo</h4><p data-en="Pics or it didn't happen" data-ko="촬영하고, 인증해야 진짜 끝나요" data-ja="撮って記録、それで本当に完了">Pics or it didn't happen</p></div></div>
       <div class="mode has-demo"><div class="modeanim demo-sign"><span class="mi">✍️</span><svg class="sig" viewBox="0 0 120 64"><line class="sigbase" x1="14" y1="50" x2="106" y2="50"/><path class="sigline" pathLength="100" d="M10,46 C6,30 16,16 24,26 C31,35 22,48 18,36 C14,24 26,16 32,32 C37,46 44,16 52,33 C56,42 50,48 50,37 C51,22 62,47 70,31 C75,21 80,42 88,32 C95,24 101,40 110,28 C114,23 121,33 128,22"/></svg><span class="chk">✓</span></div><div><h4 data-en="Sign <span class='newpill'>NEW</span>" data-ko="서명 <span class='newpill'>NEW</span>" data-ja="サイン <span class='newpill'>NEW</span>">Sign <span class="newpill">NEW</span></h4><p data-en="Sign it, seal the deal" data-ko="사인 한 번으로 굳히는 다짐" data-ja="サイン一つで決意を固める">Sign it, seal the deal</p></div></div>
       <div class="mode has-demo"><div class="modeanim demo-type"><span class="mi">⌨️</span><div class="keys"><kbd>D</kbd><kbd>O</kbd><kbd>N</kbd><kbd>E</kbd></div></div><div><h4 data-en="Type <span class='newpill'>NEW</span>" data-ko="타이핑 <span class='newpill'>NEW</span>" data-ja="タイピング <span class='newpill'>NEW</span>">Type <span class="newpill">NEW</span></h4><p data-en="Type it out, word for word" data-ko="또박또박 적어서 완료해요" data-ja="一字ずつ打ち込んで完了">Type it out, word for word</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect wrap" id="ai">
+  <div class="shead reveal">
+    <div class="protag">✦ PRO</div>
+    <div class="lead" data-en="Morning to night" data-ko="아침부터 밤까지" data-ja="朝から夜まで">Morning to night</div>
+    <h2 data-en="It plans your day. <span class='nw'>It writes it down.</span>" data-ko="<span class='nw'>아침엔 정해주고,</span> <span class='nw'>밤엔 적어줘요.</span>" data-ja="<span class='nw'>朝は決めて、</span><span class='nw'>夜は書く。</span>">It plans your day. <span class="nw">It writes it down.</span></h2>
+    <p class="ssub" data-en="Choosing what to do and recording what you did — the app does both. The only part left is <span class='nw'>the doing.</span>" data-ko="<span class='nw'>무엇을 할지 고르는 것도,</span> <span class='nw'>하루를 남기는 것도 앱이 합니다.</span> <span class='nw'>남는 건 하는 일뿐이에요.</span>" data-ja="<span class='nw'>何をやるか選ぶのも、</span><span class='nw'>一日を残すのもアプリの仕事です。</span><span class='nw'>残るのは、やることだけ。</span>">Choosing what to do and recording what you did — the app does both. The only part left is <span class="nw">the doing.</span></p>
+  </div>
+  <div class="modecols reveal">
+    <div class="modegroup">
+      <div class="modecat" data-en="Morning" data-ko="아침" data-ja="朝">Morning</div>
+      <div class="mode has-demo">
+        <div class="modeanim demo-ai demo-fortune"><span class="mi">🔮</span>
+          <div class="card"><span class="hd" data-en="Today" data-ko="오늘의 운세" data-ja="今日の運勢">Today</span><span class="ln w1"></span><span class="ln w2"></span><span class="ln w3"></span><span class="caret"></span><div class="pick"><i></i><u></u><b data-en="+ Add" data-ko="+ 추가" data-ja="+ 追加">+ Add</b></div></div><span class="tap"></span>
+        </div>
+        <div><h4 data-en="Today&#39;s fortune" data-ko="오늘의 운세" data-ja="今日の運勢">Today&#39;s fortune</h4><p data-en="Draw once each morning and three things worth doing come with it — one tap puts them on today&#39;s list." data-ko="아침에 한 번 뽑으면 오늘 하면 좋은 할 일 3개가 같이 와요. 한 번 탭하면 목록에 들어갑니다." data-ja="朝に一度引くと、今日やるといいことが3つついてきます。ワンタップで今日の一覧へ。">Draw once each morning and three things worth doing come with it — one tap puts them on today&#39;s list.</p></div>
+      </div>
+    </div>
+    <div class="modegroup">
+      <div class="modecat" data-en="Night" data-ko="밤" data-ja="夜">Night</div>
+      <div class="mode has-demo">
+        <div class="modeanim demo-ai demo-diary"><span class="mi">📖</span>
+          <div class="card"><span class="hd" data-en="Tonight" data-ko="오늘의 일기" data-ja="今日の日記">Tonight</span><span class="ln w1"></span><span class="ln w2"></span><span class="ln w3"></span><span class="ln w4"></span><span class="caret"></span><div class="gauge"><i></i></div></div>
+        </div>
+        <div><h4 data-en="AI diary" data-ko="AI 일기" data-ja="AI日記">AI diary</h4><p data-en="At night it writes your day from what you finished and what you dodged — it knows only what the rings know, and it will not flatter you." data-ko="밤이 되면 한 일과 미룬 일을 보고 AI가 하루를 씁니다. 링이 아는 것만 쓰고, 빈말은 없어요." data-ja="夜、やったことと逃げたことから一日を書きます。リングが知っていることだけ、お世辞はありません。">At night it writes your day from what you finished and what you dodged — it knows only what the rings know, and it will not flatter you.</p></div>
+      </div>
+    </div>
+    <div class="modegroup">
+      <div class="modecat" data-en="Monday" data-ko="월요일" data-ja="月曜">Monday</div>
+      <div class="mode has-demo">
+        <div class="modeanim demo-ai demo-week"><span class="mi">📊</span>
+          <div class="card"><span class="hd" data-en="Monday" data-ko="매주 월요일" data-ja="毎週月曜">Monday</span><span class="ttl"></span><div class="bars"><s></s><s class="on"></s><s></s><s class="on"></s><s></s><s></s></div></div>
+        </div>
+        <div><h4 data-en="Weekly report" data-ko="주간 리포트" data-ja="週次レポート">Weekly report</h4><p data-en="Every Monday, what you said you would do sits next to what you actually did — under a name for the week you had." data-ko="월요일마다 하겠다고 한 것 옆에 실제로 한 일이 놓입니다. 그 주에 어울리는 칭호와 함께요." data-ja="毎週月曜、やると言ったことの隣に実際にやったことが並びます。その週の称号つきで。">Every Monday, what you said you would do sits next to what you actually did — under a name for the week you had.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -556,7 +639,7 @@
   <div class="shead reveal">
     <div class="lead" data-en="Free + Pro" data-ko="무료 + Pro" data-ja="無料 + Pro">Free + Pro</div>
     <h2 data-en="Start free. <span class='nw'>Actually finish.</span>" data-ko="<span class='nw'>무료로 시작해서,</span> <span class='nw'>진짜로 끝내세요.</span>" data-ja="<span class='nw'>無料で始めて、</span><span class='nw'>本当に終わらせる。</span>">Start free. <span class="nw">Actually finish.</span></h2>
-    <p class="ssub" data-en="Free to write, finish, and sync across devices. Pro adds all nine completion modes and the honest record — so the stuff you keep putting off finally <span class='nw'>gets done.</span>" data-ko="<span class='nw'>적고·끝내고·기기 동기화까지 무료.</span> <span class='nw'>Pro는 진짜 해야 완료되는 9가지 방식과</span> <span class='nw'>정직한 기록을 더해 —</span> <span class='nw'>미루던 일이 진짜로 끝나기 시작해요.</span>" data-ja="<span class='nw'>書く・終える・端末同期まで無料。</span><span class='nw'>Proは本当にやって完了する9つのモードと</span><span class='nw'>正直な記録を加え、</span><span class='nw'>先延ばしてきたことが本当に片づき始めます。</span>">Free to write, finish, and sync across devices. Pro adds all nine completion modes and the honest record — so the stuff you keep putting off finally <span class="nw">gets done.</span></p>
+    <p class="ssub" data-en="Free to write, finish, and sync across devices. Pro decides what to start with in the morning, writes your day up at night, and adds the nine ways to <span class='nw'>actually finish.</span>" data-ko="<span class='nw'>적고·끝내고·기기 동기화까지 무료.</span> <span class='nw'>Pro는 아침에 할 일을 정해주고,</span> <span class='nw'>밤엔 하루를 적어주고,</span> <span class='nw'>진짜 해야 완료되는 9가지 방식을 더해요.</span>" data-ja="<span class='nw'>書く・終える・端末同期まで無料。</span><span class='nw'>Proは朝にやることを決め、</span><span class='nw'>夜に一日を書き、</span><span class='nw'>本当にやって完了する9つのモードを加えます。</span>">Free to write, finish, and sync across devices. Pro adds all nine completion modes and the honest record — so the stuff you keep putting off finally <span class="nw">gets done.</span></p>
   </div>
   <div class="plans reveal">
     <div class="plan free">
@@ -571,12 +654,15 @@
     <div class="plan hot">
       <div class="ptag" data-en="Pro" data-ko="Pro" data-ja="Pro">Pro</div>
       <ul>
+        <li data-en="Today&#39;s fortune — it picks what to start with" data-ko="오늘의 운세 — 뭐부터 할지 정해줘요" data-ja="今日の運勢 — 何から始めるか決めます">Today&#39;s fortune — it picks what to start with</li>
+        <li data-en="AI diary — your day, written for you" data-ko="AI 일기 — 하루를 대신 적어줘요" data-ja="AI日記 — 一日を代わりに書きます">AI diary — your day, written for you</li>
+        <li data-en="Weekly report — plan next to reality" data-ko="주간 리포트 — 하겠다던 것과 실제로 한 것" data-ja="週次レポート — 目標と実際を並べて">Weekly report — plan next to reality</li>
         <li data-en="All 9 completion modes — Knock out · Lock in · Leave a mark" data-ko="완료 방식 9종 — 해치우기 · 몰입하기 · 남기기" data-ja="完了モード9種 — やっつける・没頭する・残す">All 9 completion modes — Knock out · Lock in · Leave a mark</li>
         <li data-en="The Dot Matrix archive" data-ko="도트 매트릭스 몰입 아카이브" data-ja="ドットマトリクスのアーカイブ">The Dot Matrix archive</li>
         <li data-en="6 themes + 4 app icons" data-ko="테마 6가지 + 앱 아이콘 4종" data-ja="6つのテーマ + アプリアイコン4種">6 themes + 4 app icons</li>
         <li data-en="Removes ads" data-ko="광고 제거" data-ja="広告を非表示">Removes ads</li>
       </ul>
-      <div class="ptrial" data-en="7-day free trial" data-ko="7일 무료 체험" data-ja="7日間の無料体験">7-day free trial</div>
+      <div class="ptrial" data-en="7 days free on the yearly plan" data-ko="연간 결제 시 7일 무료" data-ja="年額なら7日間無料">7 days free on the yearly plan</div>
     </div>
   </div>
 </section>
@@ -608,7 +694,7 @@
     <h2 data-en="Questions, answered." data-ko="자주 묻는 질문." data-ja="よくある質問。">Questions, answered.</h2>
   </div>
   <div class="faq reveal">
-    <div class="qa"><div class="q" data-en="Is dottodash free?" data-ko="dottodash는 무료인가요?" data-ja="dottodashは無料ですか？">Is dottodash free?</div><div class="a" data-en="Yes — dottodash is free to download. Pro is an optional subscription that removes ads and unlocks every mode and theme." data-ko="네, 무료로 받을 수 있어요. Pro는 선택 구독으로, 광고를 없애고 모든 완료 방식과 테마를 열어줘요." data-ja="はい、無料でダウンロードできます。Proはオプションのサブスクリプションで、広告を消してすべての完了モードとテーマを開きます。">Yes — dottodash is free to download. Pro is an optional subscription that removes ads and unlocks every mode and theme.</div></div>
+    <div class="qa"><div class="q" data-en="Is dottodash free?" data-ko="dottodash는 무료인가요?" data-ja="dottodashは無料ですか？">Is dottodash free?</div><div class="a" data-en="Yes, the app is free to download. Pro is an optional subscription — today's fortune, the AI diary and the weekly report, plus all nine completion modes and themes, with ads removed." data-ko="네, 무료로 받을 수 있어요. Pro는 선택 구독으로 — 오늘의 운세·AI 일기·주간 리포트와 완료 방식 9가지, 테마를 열고 광고를 없애줘요." data-ja="はい、無料でダウンロードできます。Proは任意のサブスクリプション — 今日の運勢・AI日記・週次レポートに加え、完了モード9種とテーマ、広告の非表示。">Yes — dottodash is free to download. Pro is an optional subscription that removes ads and unlocks every mode and theme.</div></div>
     <div class="qa"><div class="q" data-en="What are completion modes?" data-ko="완료 방식이 뭔가요?" data-ja="完了モードとは？">What are completion modes?</div><div class="a" data-en="Nine ways to finish a task, in three families — Knock out (count, hold, shake), Lock in (timer, stay, flip), and Leave a mark (photo, sign, type). Each asks for a real action, so a check is hard to fake. They're part of Pro." data-ko="할 일을 끝내는 아홉 가지 방식이에요 — 세 갈래로 나뉘어요: 해치우기(횟수·길게·흔들기), 몰입하기(타이머·집중·뒤집기), 남기기(사진·서명·타이핑). 각 방식이 진짜 행동을 요구해서 체크를 가짜로 만들기 어려워요. Pro에 포함돼요." data-ja="タスクを終える9つの方法です。3つのグループに分かれます — やっつける（回数・長押し・シェイク）、没頭する（タイマー・集中・裏返し）、残す（写真・サイン・タイピング）。どれも本物の行動を求めるので、チェックをごまかしにくくなります。Proに含まれます。">Nine ways to finish a task, in three families — Knock out (count, hold, shake), Lock in (timer, stay, flip), and Leave a mark (photo, sign, type). Each asks for a real action, so a check is hard to fake. They're part of Pro.</div></div>
     <div class="qa"><div class="q" data-en="How is it different from a notes app?" data-ko="메모앱이랑 뭐가 다른가요?" data-ja="メモアプリと何が違いますか？">How is it different from a notes app?</div><div class="a" data-en="In a notes or reminders app you can cross anything out without doing it. In dottodash every task carries a small mission, so it ends only when you actually do it — and one entry shows up across Today, Calendar, and Todo, with yesterday's leftovers one tap away." data-ko="메모장이나 기본 미리알림에선 아무것도 안 해도 지울 수 있어요. dottodash는 할 일마다 작은 미션이 붙어서 진짜로 해야 끝나요. 게다가 한 번 적으면 오늘·캘린더·할일에서 같이 보이고, 어제 못 한 일도 탭 한 번으로 가져와요." data-ja="メモアプリやリマインダーでは、やらなくても消せてしまいます。dottodashはタスクごとに小さなミッションが付き、本当にやらないと終わりません。しかも一度書けば今日・カレンダー・ToDoに同じように現れ、昨日の残りもワンタップで持ってこられます。">In a notes or reminders app you can cross anything out without doing it. In dottodash every task carries a small mission, so it ends only when you actually do it — and one entry shows up across Today, Calendar, and Todo, with yesterday's leftovers one tap away.</div></div>
     <div class="qa"><div class="q" data-en="Where is my data stored?" data-ko="데이터는 어디에 저장되나요?" data-ja="データはどこに保存されますか？">Where is my data stored?</div><div class="a" data-en="On your device, and synced privately through your own iCloud — we have no servers and never see your tasks. Ads on the free tier are served by Google AdMob — no tracking, no ATT prompt; Pro removes the ads." data-ko="기기에 저장되고, 본인 iCloud로만 동기화돼요. 저희는 서버가 없어서 할 일을 볼 수 없어요. 무료 버전의 광고는 Google AdMob이 제공하고, 추적은 하지 않아요. Pro는 광고를 없애줍니다." data-ja="端末に保存され、ご自身のiCloudだけで同期されます。私たちはサーバーを持たず、タスクを見ることはできません。無料版の広告はGoogle AdMobが配信し、トラッキングは行いません。Proは広告を消します。">On your device, and synced privately through your own iCloud — we have no servers and never see your tasks. Ads on the free tier are served by Google AdMob — no tracking, no ATT prompt; Pro removes the ads.</div></div>
