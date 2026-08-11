@@ -195,23 +195,20 @@
   .demo-fortune .pk.k3 u{max-width:62%}
   @keyframes pkin{0%{opacity:0;transform:translateY(9px) scale(.94)}4%{opacity:1;transform:translateY(-2px) scale(1.03)}8%{transform:translateY(0) scale(1)}88%{opacity:1;transform:translateY(0) scale(1)}95%,100%{opacity:0;transform:translateY(0) scale(1)}}
 
-  /* 일기 — 다 쓰고 나면 아래에 대표 사진과 그날의 완료 게이지가 남는다 */
-  .demo-diary .ln{animation:aiw 6.4s infinite}
-  .demo-diary .ln.w1{--w:72%;animation-delay:.15s}
-  .demo-diary .ln.w2{--w:88%;animation-delay:.6s}
-  .demo-diary .ln.w3{--w:64%;animation-delay:1.05s}
-  .demo-diary .ln.w4{--w:80%;animation-delay:1.5s}
-  .demo-diary .ln.w5{--w:54%;animation-delay:1.95s}
-  .demo-diary .foot{margin-top:auto;display:flex;align-items:center;gap:9px;opacity:0;transform:translateY(9px);animation:dfoot 6.4s infinite}
-  @keyframes dfoot{0%,38%{opacity:0;transform:translateY(9px)}46%{opacity:1;transform:translateY(0)}90%{opacity:1;transform:translateY(0)}97%,100%{opacity:0;transform:translateY(0)}}
-  .demo-diary .ph{position:relative;flex:none;width:32px;height:32px;border-radius:8px;background:var(--tint);overflow:hidden}
-  .demo-diary .ph::before{content:"";position:absolute;left:4px;bottom:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:13px solid var(--accent);opacity:.42}
-  .demo-diary .ph::after{content:"";position:absolute;right:6px;top:6px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.5}
-  .demo-diary .fs{flex:1;min-width:0;display:flex;flex-direction:column;gap:7px}
-  .demo-diary .fb{width:58%;height:5px;border-radius:3px;background:var(--ln);opacity:.4}
-  .demo-diary .gauge{height:6px;border-radius:3px;background:var(--tint);overflow:hidden}
-  .demo-diary .gauge i{display:block;height:100%;width:0;border-radius:3px;background:var(--accent);animation:dg 6.4s infinite}
-  @keyframes dg{0%,46%{width:0}64%{width:62%}90%{width:62%}100%{width:62%}}
+  /* 일기 — 일기장처럼: 맨 위에 그날의 사진이 크게 붙고, 그 아래로 글이 써진다 */
+  .demo-diary .card{padding:0}
+  .demo-diary .ph{position:relative;flex:none;height:44%;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,0) 62%),var(--tint);border-bottom:1px solid var(--line);overflow:hidden;opacity:0;transform:scale(1.06);animation:dph 6.8s infinite}
+  @keyframes dph{0%{opacity:0;transform:scale(1.06)}7%{opacity:1;transform:scale(1)}92%{opacity:1;transform:scale(1)}98%,100%{opacity:0;transform:scale(1)}}
+  .demo-diary .ph::before{content:"";position:absolute;left:-6px;bottom:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:34px solid var(--accent);opacity:.5}
+  .demo-diary .ph i{position:absolute;right:14px;bottom:0;border-left:19px solid transparent;border-right:19px solid transparent;border-bottom:24px solid var(--accent);opacity:.34}
+  .demo-diary .ph::after{content:"";position:absolute;right:15px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--accent);opacity:.6}
+  .demo-diary .body{flex:1;min-height:0;display:flex;flex-direction:column;padding:9px 11px 11px}
+  .demo-diary .ln{animation:aiw 6.8s infinite}
+  .demo-diary .ln.w1{--w:72%;animation-delay:.7s}
+  .demo-diary .ln.w2{--w:88%;animation-delay:1.15s}
+  .demo-diary .ln.w3{--w:64%;animation-delay:1.6s}
+  .demo-diary .ln.w4{--w:80%;animation-delay:2.05s}
+  .demo-diary .ln.w5{--w:54%;animation-delay:2.5s}
 
   /* 주간 리포트 — 막대는 오른쪽이 잘렸다. 꺾은선으로 바꾸고 수치가 주마다 오르내리게 한다.
      CSS의 d/cy 기하 속성 애니메이션(Chrome 91+ / Safari 16.4+ / FF 97+)이라
@@ -221,23 +218,9 @@
   .demo-week .wchart{width:100%;height:auto;margin-top:auto;display:block}
   .demo-week .wgrid{stroke:var(--ln);stroke-width:.8;opacity:.2}
   .demo-week .wbase{stroke:var(--ln);stroke-width:1;opacity:.34}
-  .demo-week .wl{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;d:path("M10,40 L33,30 L56,44 L79,22 L102,34 L125,16");animation:wline 6.6s infinite}
-  @keyframes wline{
-    0%,10%{d:path("M10,40 L33,30 L56,44 L79,22 L102,34 L125,16")}
-    38%{d:path("M10,34 L33,43 L56,27 L79,38 L102,20 L125,27")}
-    66%{d:path("M10,46 L33,25 L56,37 L79,30 L102,43 L125,18")}
-    92%,100%{d:path("M10,40 L33,30 L56,44 L79,22 L102,34 L125,16")}}
-  .demo-week .wd{fill:var(--tile);stroke:var(--accent);stroke-width:2;r:2.4}
-  .demo-week .wd.hot{fill:var(--accent);r:3.4}
-  .demo-week .wd{animation-duration:6.6s;animation-iteration-count:infinite}
-  .demo-week .p1{animation-name:wp1}.demo-week .p2{animation-name:wp2}.demo-week .p3{animation-name:wp3}
-  .demo-week .p4{animation-name:wp4}.demo-week .p5{animation-name:wp5}.demo-week .p6{animation-name:wp6}
-  @keyframes wp1{0%,10%{cy:40}38%{cy:34}66%{cy:46}92%,100%{cy:40}}
-  @keyframes wp2{0%,10%{cy:30}38%{cy:43}66%{cy:25}92%,100%{cy:30}}
-  @keyframes wp3{0%,10%{cy:44}38%{cy:27}66%{cy:37}92%,100%{cy:44}}
-  @keyframes wp4{0%,10%{cy:22}38%{cy:38}66%{cy:30}92%,100%{cy:22}}
-  @keyframes wp5{0%,10%{cy:34}38%{cy:20}66%{cy:43}92%,100%{cy:34}}
-  @keyframes wp6{0%,10%{cy:16}38%{cy:27}66%{cy:18}92%,100%{cy:16}}
+  .demo-week .wl{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .demo-week .wm circle{fill:var(--tile);stroke:var(--accent);stroke-width:2}
+  .demo-week .wm.hot circle{fill:var(--accent)}
   .demo-flip .fstage{position:relative;display:grid;place-items:center;perspective:600px}
   .demo-flip .fphone{position:relative;width:40px;height:72px;transform-style:preserve-3d;animation:flipp 4s infinite}
   .demo-flip .ff{position:absolute;inset:0;border-radius:11px;border:2px solid var(--accent);backface-visibility:hidden;background:var(--tile);box-shadow:0 12px 22px -10px rgba(0,0,0,.28)}
@@ -299,7 +282,7 @@
   @keyframes key2{0%,17%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}22%{transform:translateY(3px);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}28%,82%{transform:translateY(0);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}90%,100%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}}
   @keyframes key3{0%,29%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}34%{transform:translateY(3px);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}40%,82%{transform:translateY(0);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}90%,100%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}}
   @keyframes key4{0%,41%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}46%{transform:translateY(3px);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}52%,82%{transform:translateY(0);background:var(--accent);color:#fff;box-shadow:0 0 0 rgba(0,0,0,0)}90%,100%{transform:translateY(0);background:var(--tile);color:var(--accent);box-shadow:0 3px 0 -1px rgba(0,102,204,.4)}}
-  @media(prefers-reduced-motion:reduce){.modeanim *{animation:none!important}.demo-count .cnum b:nth-child(5){opacity:1;transform:none}.demo-count .cdots i{opacity:1}.demo-flip .fphone{transform:rotateY(180deg)}.demo-flip .ftime{opacity:.6}.demo-flip .farc{stroke-dashoffset:10}.demo-stay .sarc,.demo-sign .sigline{stroke-dashoffset:0}.demo-hold .hgrow{transform:translate(-50%,-50%) scale(1)}.demo-timer .tnum b:nth-child(5){opacity:1}.demo-type kbd{background:var(--accent);color:#fff}.demo-photo .thumb{opacity:1;transform:translate(-50%,-50%) scale(1)}.modeanim .chk{opacity:1;transform:translate(-50%,-50%) scale(1)}.demo-ai .ln{width:var(--w)}.demo-fortune .pk,.demo-diary .foot,.demo-week .ttl{opacity:1;transform:none}.demo-diary .gauge i{width:62%}}
+  @media(prefers-reduced-motion:reduce){.modeanim *{animation:none!important}.demo-count .cnum b:nth-child(5){opacity:1;transform:none}.demo-count .cdots i{opacity:1}.demo-flip .fphone{transform:rotateY(180deg)}.demo-flip .ftime{opacity:.6}.demo-flip .farc{stroke-dashoffset:10}.demo-stay .sarc,.demo-sign .sigline{stroke-dashoffset:0}.demo-hold .hgrow{transform:translate(-50%,-50%) scale(1)}.demo-timer .tnum b:nth-child(5){opacity:1}.demo-type kbd{background:var(--accent);color:#fff}.demo-photo .thumb{opacity:1;transform:translate(-50%,-50%) scale(1)}.modeanim .chk{opacity:1;transform:translate(-50%,-50%) scale(1)}.demo-ai .ln{width:var(--w)}.demo-fortune .pk,.demo-diary .ph,.demo-week .ttl{opacity:1;transform:none}}
   .shots{display:grid;gap:clamp(16px,3vw,32px);margin-top:clamp(36px,6vw,64px);justify-items:center}
   .shots.two{grid-template-columns:repeat(2,auto);justify-content:center}
   /* v2: pro pill */
@@ -533,9 +516,11 @@
       <div class="mode has-demo">
         <div class="modeanim demo-ai demo-diary"><span class="mi">📖</span>
           <div class="card">
-            <span class="hd" data-en="Tonight" data-ko="오늘의 일기" data-ja="今日の日記">Tonight</span>
-            <div class="txt"><span class="ln w1"></span><span class="ln w2"></span><span class="ln w3"></span><span class="ln w4"></span><span class="ln w5"></span></div>
-            <div class="foot"><span class="ph"></span><div class="fs"><span class="fb"></span><div class="gauge"><i></i></div></div></div>
+            <span class="ph"><i></i></span>
+            <div class="body">
+              <span class="hd" data-en="Tonight" data-ko="오늘의 일기" data-ja="今日の日記">Tonight</span>
+              <div class="txt"><span class="ln w1"></span><span class="ln w2"></span><span class="ln w3"></span><span class="ln w4"></span><span class="ln w5"></span></div>
+            </div>
           </div>
         </div>
         <div><h4 data-en="AI diary" data-ko="AI 일기" data-ja="AI日記">AI diary</h4><p data-en="At night it writes your day from what you finished and what you dodged — it knows only what the rings know, and it will not flatter you." data-ko="밤이 되면 한 일과 미룬 일을 보고 AI가 하루를 씁니다. 링이 아는 것만 쓰고, 빈말은 없어요." data-ja="夜、やったことと逃げたことから一日を書きます。リングが知っていることだけ、お世辞はありません。">At night it writes your day from what you finished and what you dodged — it knows only what the rings know, and it will not flatter you.</p></div>
@@ -549,34 +534,28 @@
             <span class="hd" data-en="Monday" data-ko="매주 월요일" data-ja="毎週月曜">Monday</span>
             <span class="ttl"></span>
             <svg class="wchart" viewBox="0 0 132 62" aria-hidden="true">
+              <defs>
+                <marker id="wdot" class="wm" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10">
+                  <circle cx="5" cy="5" r="2.4"/>
+                </marker>
+                <marker id="wdotend" class="wm hot" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="12" markerHeight="12">
+                  <circle cx="6" cy="6" r="3.4"/>
+                </marker>
+              </defs>
               <line class="wgrid" x1="4" y1="16" x2="128" y2="16"/>
               <line class="wgrid" x1="4" y1="35" x2="128" y2="35"/>
               <line class="wbase" x1="4" y1="54" x2="128" y2="54"/>
-              <path class="wl" d="M10,40 L33,30 L56,44 L79,22 L102,34 L125,16"/>
-              <circle class="wd p1" cx="10" cy="40"/>
-              <circle class="wd p2" cx="33" cy="30"/>
-              <circle class="wd p3" cx="56" cy="44"/>
-              <circle class="wd p4" cx="79" cy="22"/>
-              <circle class="wd p5" cx="102" cy="34"/>
-              <circle class="wd hot p6" cx="125" cy="16"/>
+              <path class="wl" d="M10,40 L33,30 L56,44 L79,22 L102,34 L125,16" marker-start="url(#wdot)" marker-mid="url(#wdot)" marker-end="url(#wdotend)">
+                <animate attributeName="d" dur="6.6s" repeatCount="indefinite"
+                  keyTimes="0;0.1;0.38;0.66;0.92;1" calcMode="spline" keySplines=".25 .1 .25 1;.25 .1 .25 1;.25 .1 .25 1;.25 .1 .25 1;.25 .1 .25 1"
+                  values="M10,40 L33,30 L56,44 L79,22 L102,34 L125,16;M10,40 L33,30 L56,44 L79,22 L102,34 L125,16;M10,34 L33,43 L56,27 L79,38 L102,20 L125,27;M10,46 L33,25 L56,37 L79,30 L102,43 L125,18;M10,40 L33,30 L56,44 L79,22 L102,34 L125,16;M10,40 L33,30 L56,44 L79,22 L102,34 L125,16"/>
+              </path>
             </svg>
           </div>
         </div>
         <div><h4 data-en="Weekly report" data-ko="주간 리포트" data-ja="週次レポート">Weekly report</h4><p data-en="Every Monday, what you said you would do sits next to what you actually did — under a name for the week you had." data-ko="월요일마다 하겠다고 한 것 옆에 실제로 한 일이 놓입니다. 그 주에 어울리는 칭호와 함께요." data-ja="毎週月曜、やると言ったことの隣に実際にやったことが並びます。その週の称号つきで。">Every Monday, what you said you would do sits next to what you actually did — under a name for the week you had.</p></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sect wrap" id="record">
-  <div class="shead reveal">
-    <div class="protag">✦ PRO</div>
-    <div class="lead" data-en="An honest, guilt-free record" data-ko="죄책감 없는, 정직한 기록" data-ja="罪悪感のない、正直な記録">An honest, guilt-free record</div>
-    <h2 data-en="Proof you actually kept your word." data-ko="내가 한 말을, 내가 지켰다는 증거." data-ja="自分との約束を、守った証。">Proof you actually kept your word.</h2>
-    <p class="ssub" data-en="Each thing you finish is one dot. An honestly-earned month becomes a one-of-a-kind Dot Matrix, and the days you skipped stay blank — no auto-fill, no backfilling." data-ko="끝낸 일 하나가 점 하나예요. 정직하게 채운 한 달은 하나뿐인 도트 매트릭스가 되고, 건너뛴 날은 빈자리로 남아요 — 자동 채움도, 소급도 없이." data-ja="終えたこと一つが、点ひとつ。正直に満たした一か月は、ひとつだけのドットマトリクスになり、サボった日は空白のまま — 自動入力も、さかのぼり入力もありません。">Each thing you finish is one dot. An honestly-earned month becomes a one-of-a-kind Dot Matrix, and the days you skipped stay blank — no auto-fill, no backfilling.</p>
-  </div>
-  <div class="figure reveal">
-    <img class="archiveshot" loading="lazy" src="assets/v2-archive.png?v=1" alt="Dot Matrix archive — each dot is a task you finished; blanks are days you skipped">
   </div>
 </section>
 
@@ -738,6 +717,13 @@
   }
   window.addEventListener('load',()=>{drawLinks();setTimeout(drawLinks,300)});
   window.addEventListener('resize',drawLinks);
+  (function(){
+    const svg=document.querySelector('.demo-week .wchart');
+    if(!svg||!svg.pauseAnimations)return;
+    svg.pauseAnimations();
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){svg.unpauseAnimations();o.disconnect();}},{threshold:.15}).observe(svg);
+  })();
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   drawLinks();
