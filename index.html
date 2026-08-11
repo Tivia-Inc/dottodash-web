@@ -320,7 +320,7 @@
   @media(prefers-reduced-motion:reduce){.aurora,.heroshot{animation:none}.tryring,.plan,.tp,.badge,.mailbtn{transition:none}}
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
-  /* #surge (secondary ADHD section): surge line + 85%-undiagnosed donut, drawn on reveal */
+  /* unused since v2.5 (the ADHD statistics section was removed); kept in case a chart returns */
   .chart{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}
   .gbase{stroke:var(--line);stroke-width:1.5}
   .gx{font-size:11px;fill:var(--muted)}
@@ -446,7 +446,7 @@
   <p class="trynote" data-en="* Nine ways to complete now — and more coming." data-ko="* 이제 완료 방식이 9가지 — 앞으로도 계속 늘어나요." data-ja="* 完了の方法はいま9つ — これからも増えていきます。">* Nine ways to complete now — and more coming.</p>
 </div></section>
 
-<section class="sect wrap" id="adhd">
+<section class="sect wrap" id="design">
   <div class="shead reveal">
     <div class="lead" data-en="It's not about willpower" data-ko="의지 문제가 아니에요" data-ja="意志の問題じゃない">It's not about willpower</div>
     <h2 data-en="So we built it so the body moves first." data-ko="그래서, 행동이 먼저 나오게 설계했어요." data-ja="だから、体が先に動くように設計。">So we built it so the body moves first.</h2>
@@ -594,44 +594,6 @@
       <button type="button" class="sw" data-c="#6C4DD6"><span class="swc" style="background:#6C4DD6"></span><span>Violet</span></button>
     </div>
     <p class="trycap" data-en="Tap one — this whole page <span class='nw'>takes the color.</span>" data-ko="눌러보세요 — <span class='nw'>이 페이지가 통째로</span> <span class='nw'>그 색으로 물들어요.</span>" data-ja="タップしてみて — <span class='nw'>このページがまるごと</span><span class='nw'>その色に染まります。</span>">Tap one — this whole page <span class="nw">takes the color.</span></p>
-  </div>
-</section>
-
-<section class="sect wrap" id="surge">
-  <div class="shead reveal">
-    <div class="lead" data-en="Made for ADHD too" data-ko="ADHD에게도 딱" data-ja="ADHDにもぴったり">Made for ADHD too</div>
-    <h2 data-en="ADHD diagnoses: <span class='nw'>+385% in 4 years.</span>" data-ko="ADHD 진료, <span class='nw'>4년 새 +385%.</span>" data-ja="ADHD受診、<span class='nw'>4年で+385%。</span>">ADHD diagnoses: <span class="nw">+385% in 4 years.</span></h2>
-    <p class="ssub" data-en="In Korea: 25k (2020) &#8594; 123k (2024). Treatment cost jumped <span class='nw'>6&#215; in five years,</span> past &#8361;100B." data-ko="<span class='nw'>한국 2020년 2.5만 명</span> &#8594; <span class='nw'>2024년 12.3만 명.</span> <span class='nw'>진료비는 5년 새 6배,</span> <span class='nw'>1,000억을 넘었어요.</span>" data-ja="<span class='nw'>韓国では2020年2.5万人</span> &#8594; <span class='nw'>2024年12.3万人。</span><span class='nw'>医療費は5年で6倍、</span><span class='nw'>1,000億ウォン超。</span>">In Korea: 25k (2020) &#8594; 123k (2024). Treatment cost jumped <span class="nw">6&#215; in five years,</span> past &#8361;100B.</p>
-  </div>
-  <div class="reveal">
-    <svg class="chart" viewBox="0 0 320 178" role="img" aria-label="ADHD diagnoses in Korea rose from 25k in 2020 to 123k in 2024">
-      <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-opacity=".22"/><stop offset="1" stop-opacity="0"/></linearGradient></defs>
-      <line class="cgrid" x1="30" y1="115" x2="306" y2="115"/>
-      <line class="cgrid" x1="30" y1="80" x2="306" y2="80"/>
-      <line class="cgrid" x1="30" y1="45" x2="306" y2="45"/>
-      <line class="gbase" x1="30" y1="150" x2="306" y2="150"/>
-      <path class="carea" fill="url(#ag)" d="M36 125.2 C47 123.05 80 117.75 102 112.3 C124 106.85 146 100.43 168 92.5 C190 84.57 212 75.45 234 64.7 C256 53.95 289 34.12 300 28 L300 150 L36 150 Z"/>
-      <path class="cline" d="M36 125.2 C47 123.05 80 117.75 102 112.3 C124 106.85 146 100.43 168 92.5 C190 84.57 212 75.45 234 64.7 C256 53.95 289 34.12 300 28"/>
-      <circle class="chalo" cx="300" cy="28" r="10"/>
-      <circle class="cdot" cx="300" cy="28" r="4.5"/>
-      <text class="cpct" x="40" y="52">+385%</text>
-      <text class="gval" x="36" y="141" text-anchor="start" data-en="25k" data-ko="2.5만" data-ja="2.5万">25k</text>
-      <text class="gval" x="300" y="19" text-anchor="end" data-en="123k" data-ko="12.3만" data-ja="12.3万">123k</text>
-      <text class="gx" x="36" y="168" text-anchor="middle">2020</text>
-      <text class="gx" x="102" y="168" text-anchor="middle">&#8217;21</text>
-      <text class="gx" x="168" y="168" text-anchor="middle">&#8217;22</text>
-      <text class="gx" x="234" y="168" text-anchor="middle">&#8217;23</text>
-      <text class="gx" x="300" y="168" text-anchor="middle">2024</text>
-    </svg>
-    <div class="iceberg">
-      <svg class="donut" viewBox="0 0 88 88" role="img" aria-label="85% undiagnosed">
-        <circle class="dring" cx="44" cy="44" r="36"/>
-        <circle class="darc" cx="44" cy="44" r="36" transform="rotate(-90 44 44)"/>
-        <text class="dpct" x="44" y="51" text-anchor="middle">85%</text>
-      </svg>
-      <div class="ibtxt" data-en="Diagnosis is just the tip. <b>85%</b> don't yet know they have ADHD &#8212; <span class='me'>maybe you?</span>" data-ko="진단은 <b>빙산의 일각</b>. <b>85%</b>는 아직 자신이 ADHD인 줄 몰라요 &#8212; <span class='me'>내 얘기일 수도.</span>" data-ja="診断は氷山の一角。<b>85%</b>はまだ自分がADHDだと気づいていません &#8212; <span class='me'>あなたかも。</span>">Diagnosis is just the tip. <b>85%</b> don't yet know they have ADHD &#8212; <span class="me">maybe you?</span></div>
-    </div>
-    <p class="trynote" style="margin-top:14px;text-align:center" data-en="Source: HIRA, Korea — ADHD treatment volume &amp; cost." data-ko="출처: 건강보험심사평가원 — 국내 ADHD 진료 인원·진료비." data-ja="出典: 韓国 健康保険審査評価院 — ADHD受診者数・医療費。">Source: HIRA, Korea — ADHD treatment volume &amp; cost.</p>
   </div>
 </section>
 
